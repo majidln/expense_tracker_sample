@@ -12,7 +12,8 @@ module.exports = {
     'comma-dangle': 'off',
     'eslint-disable import/named': 'off',
     'eslint-disable-next-line': 'off',
-    'react/jsx-props-no-spreading': 'off'
+    'react/jsx-props-no-spreading': 'off',
+    eqeqeq: 'off',
   },
   globals: {
     fetch: false

@@ -8,5 +8,10 @@ export default {
     home: 'Home',
     setting: 'Setting',
     income: 'Income',
+  },
+  components: {
+    selectInput: {
+      defaultValue: 'Choose an options'
+    }
   }
 };

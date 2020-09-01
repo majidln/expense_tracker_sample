@@ -8,7 +8,7 @@ function TextInput(props) {
     onChangeText, value, label, style, ...other
   } = props;
   return (
-    <View>
+    <View style={styles.wrapper}>
       {label && <Text style={styles.label}>{label}</Text>}
       <EditText
         {...other}
@@ -20,10 +20,14 @@ function TextInput(props) {
   );
 }
 const styles = StyleSheet.create({
-    label: {
-        fontSize: 16,
-        textAlign: 'left'
-    },
+  wrapper: {
+    padding: 8
+  },
+  label: {
+    fontSize: 16,
+    marginBottom: 4,
+    textAlign: 'left'
+  },
   input: {
     height: 50, backgroundColor: 'white', borderColor: 'lightgray', padding: 14, borderRadius: 8, borderWidth: 1, fontSize: 18
   }

@@ -1,0 +1,162 @@
+import React, { useState } from 'react';
+import {
+  StyleSheet, View, Text, TouchableOpacity, FlatList
+} from 'react-native';
+import Icon from 'react-native-vector-icons/Ionicons';
+import Modal from 'react-native-modal';
+import { isIphoneX } from '../utils/device';
+import i18n from '../services/i18n';
+
+// data: get a list of item to show in select box as a modal
+// value: get selected itemText, itemValue
+function SelectInput(props) {
+  const [visible, setVisible] = useState(false);
+
+  const {
+    onSelect, value, itemText, itemValue, data, label, style
+  } = props;
+
+  const onSelectItem = (item) => {
+    if (onSelect) {
+      onSelect(item);
+    }
+    setVisible(false);
+  };
+
+  const renderItem = ({ item }) => (
+    <TouchableOpacity style={styles.itemWrapper} onPress={() => onSelectItem()}>
+      <Text style={styles.item}>{item.title}</Text>
+    </TouchableOpacity>
+  );
+
+  const renderItemSeperator = () => (
+    <View style={{ height: 1, backgroundColor: 'lightgray' }} />
+  );
+
+  return (
+    <View style={styles.wrapper}>
+      {label && <Text style={styles.label}>{label}</Text>}
+      <TouchableOpacity onPress={() => setVisible(true)} style={styles.input}>
+        {value && value.itemValue ? <Text>{value && value.itemValue}</Text>
+          : <Text style={styles.placeholder}>{i18n.t('components.selectInput.defaultValue')}</Text>}
+        <Icon style={styles.optionIcon} name="ios-arrow-round-down" size={28} color="gray" />
+      </TouchableOpacity>
+      <Modal
+        animationType="slide"
+        transparent
+        visible={visible}
+        onBackdropPress={() => setVisible(false)}
+        style={{
+          justifyContent: 'flex-end',
+          margin: 0,
+        }}
+      >
+        <View style={[styles.centeredView, { paddingBottom: isIphoneX() ? 45 : 10 }]}>
+          <View>
+            <View style={styles.modalTitleWrapper}>
+              <Text style={styles.modalTitle}>{label}</Text>
+              <TouchableOpacity
+                style={styles.closeBtn}
+                onPress={() => setVisible(false)}
+              >
+                <Icon name="md-close" color="white" size={25} />
+              </TouchableOpacity>
+            </View>
+            <FlatList
+              data={data || []}
+              renderItem={(row) => renderItem(row)}
+              ItemSeparatorComponent={() => renderItemSeperator()}
+              keyExtractor={(row) => row.id}
+            />
+          </View>
+        </View>
+      </Modal>
+    </View>
+  );
+}
+const styles = StyleSheet.create({
+  wrapper: {
+    padding: 8
+  },
+  label: {
+    fontSize: 16,
+    marginBottom: 4,
+    textAlign: 'left'
+  },
+  placeholder: {
+    color: 'gray',
+    fontSize: 16
+  },
+  input: {
+    height: 50, backgroundColor: 'white', borderColor: 'lightgray', padding: 14, borderRadius: 8, borderWidth: 1, fontSize: 18
+  },
+  optionIcon: {
+    position: 'absolute',
+    right: 5,
+    top: 10
+  },
+  centeredView: {
+    justifyContent: 'flex-end',
+    backgroundColor: 'white'
+  },
+  modalView: {
+    margin: 20,
+    backgroundColor: 'white',
+    borderRadius: 20,
+    padding: 35,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5
+  },
+  openButton: {
+    backgroundColor: '#F194FF',
+    borderRadius: 20,
+    padding: 10,
+    elevation: 2
+  },
+  textStyle: {
+    color: 'white',
+    fontWeight: 'bold',
+    textAlign: 'center'
+  },
+  itemWrapper: {
+    width: '100%',
+    padding: 16,
+  },
+  item: {
+    textAlign: 'left'
+  },
+  modalTitleWrapper: {
+    backgroundColor: '#22a6b3',
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  modalTitle: {
+    color: 'white',
+  },
+  closeBtn: {
+    position: 'absolute',
+    left: 0,
+    width: 50,
+    height: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'white',
+  },
+  modalText: {
+    marginBottom: 15,
+    textAlign: 'center'
+  },
+  input: {
+    height: 50, backgroundColor: 'white', borderColor: 'lightgray', padding: 14, borderRadius: 8, borderWidth: 1, fontSize: 18
+  }
+});
+
+export default SelectInput;

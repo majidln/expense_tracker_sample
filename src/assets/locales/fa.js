@@ -8,5 +8,10 @@ export default {
     home: 'خانه',
     setting: 'تنظیمات',
     income: 'ورودی',
+  },
+  components: {
+    selectInput: {
+      defaultValue: 'یک مورد را انتخاب کنید'
+    }
   }
 };
