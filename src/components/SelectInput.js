@@ -88,7 +88,13 @@ const styles = StyleSheet.create({
     fontSize: 16
   },
   input: {
-    height: 50, backgroundColor: 'white', borderColor: 'lightgray', padding: 14, borderRadius: 8, borderWidth: 1, fontSize: 18
+    height: 50,
+    backgroundColor: 'white',
+    borderColor: 'lightgray',
+    padding: 14,
+    borderRadius: 8,
+    borderWidth: 1,
+    fontSize: 18
   },
   optionIcon: {
     position: 'absolute',
@@ -154,9 +160,6 @@ const styles = StyleSheet.create({
     marginBottom: 15,
     textAlign: 'center'
   },
-  input: {
-    height: 50, backgroundColor: 'white', borderColor: 'lightgray', padding: 14, borderRadius: 8, borderWidth: 1, fontSize: 18
-  }
 });
 
 export default SelectInput;

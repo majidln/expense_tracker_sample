@@ -2,8 +2,7 @@
     "light": {
         "primaryText": "#0b132b",
         "backgroundColor": "#eff7f6",
-        "tabBarBackgroundColor": "#e6ebe0",
-        "tabBarActiveColor": "#02c39a",
+        "headerColor": "#22a6b3",
         "floatingMenu": "#4834d4",
         "income": "#6ab04c",
         "expense": "#eb4d4b"
@@ -11,8 +10,7 @@
     "dark": {
         "primaryText": "#98c1d9",
         "backgroundColor": "#14213d",
-        "tabBarBackgroundColor": "#2b2d42",
-        "tabBarActiveColor": "#fcbf49",
+        "headerColor": "#130f40",
         "floatingMenu": "#4834d4",
         "income": "#6ab04c",
         "expense": "#eb4d4b"
