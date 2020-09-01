@@ -1,5 +1,6 @@
 module.exports = {
   extends: 'airbnb',
+  ignorePatterns: ['node_modules/', 'android/', 'ios/'],
   parser: 'babel-eslint',
   env: {
     jest: true,

@@ -1,13 +1,13 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
-import { withTheme } from './../providers/ThemeProviders';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { withTheme } from '../providers/ThemeProviders';
 
-function MainScreen({theme}) {
+function MainScreen({ theme }) {
   return (
-    <View style={[styles.container, {backgroundColor: theme.backgroundColor}]}>
-      <Text styles={{color: theme.primaryText}}>Main Screen</Text>
+    <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
+      <Text styles={{ color: theme.primaryText }}>Main Screen</Text>
     </View>
-  )
+  );
 }
 const styles = StyleSheet.create({
   container: {
@@ -15,6 +15,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   }
-})
+});
 
 export default withTheme(MainScreen);
