@@ -37,7 +37,7 @@ function SelectInput(props) {
     <View style={styles.wrapper}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TouchableOpacity onPress={() => setVisible(true)} style={styles.input}>
-        {value[itemValue] ? <Text>{value[itemValue]}</Text>
+        {value[itemValue] ? <Text style={styles.value}>{value[itemValue]}</Text>
           : <Text style={styles.placeholder}>{placeholder}</Text>}
         <Icon style={styles.optionIcon} name="chevron-down-outline" size={28} color="gray" />
       </TouchableOpacity>
@@ -83,6 +83,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     marginBottom: 4,
     textAlign: 'left'
+  },
+  value: {
+    fontSize: 16
   },
   placeholder: {
     color: 'gray',
@@ -141,7 +144,8 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   item: {
-    textAlign: 'left'
+    textAlign: 'left',
+    fontSize: 16
   },
   modalTitleWrapper: {
     backgroundColor: '#22a6b3',

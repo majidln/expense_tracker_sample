@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     padding: 14,
     borderRadius: 8,
     borderWidth: 1,
-    fontSize: 18
+    fontSize: 16
   },
   error: {
     color: 'red',
