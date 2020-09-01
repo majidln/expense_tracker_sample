@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 import MainScreen from '../screens/MainScreen';
 import SettingScreen from '../screens/SettingScreen';
+import IncomeScreen from '../screens/Income';
 import ModalScreen from '../screens/ModalScreen';
 
 const Stack = createStackNavigator();
@@ -13,6 +14,7 @@ function MainStackNavigator() {
       <Stack.Navigator>
         <Stack.Screen name="Main" component={MainScreen} />
         <Stack.Screen name="Setting" component={SettingScreen} />
+        <Stack.Screen name="Income" component={IncomeScreen} />
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Navigator>
     </NavigationContainer>
