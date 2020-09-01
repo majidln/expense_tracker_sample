@@ -9,7 +9,10 @@ module.exports = {
     'no-use-before-define': 'off',
     'react/jsx-filename-extension': 'off',
     'react/prop-types': 'off',
-    'comma-dangle': 'off'
+    'comma-dangle': 'off',
+    'eslint-disable import/named': 'off',
+    'eslint-disable-next-line': 'off',
+    'react/jsx-props-no-spreading': 'off'
   },
   globals: {
     fetch: false

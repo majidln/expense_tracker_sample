@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 function MainStackNavigator() {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator initialRouteName="Income">
         <Stack.Screen name="Main" component={MainScreen} options={{ title: i18n.t('navigation.home') }} />
         <Stack.Screen name="Setting" component={SettingScreen} options={{ title: i18n.t('navigation.setting') }} />
         <Stack.Screen name="Income" component={IncomeScreen} options={{ title: i18n.t('navigation.income') }} />
