@@ -5,7 +5,8 @@
         "headerColor": "#22a6b3",
         "floatingMenu": "#4834d4",
         "income": "#6ab04c",
-        "expense": "#eb4d4b"
+        "expense": "#eb4d4b",
+        "mainButton": "#22a6b3"
     },
     "dark": {
         "primaryText": "#98c1d9",
@@ -13,6 +14,7 @@
         "headerColor": "#130f40",
         "floatingMenu": "#4834d4",
         "income": "#6ab04c",
-        "expense": "#eb4d4b"
+        "expense": "#eb4d4b",
+        "mainButton": "#130f40"
     }
 }

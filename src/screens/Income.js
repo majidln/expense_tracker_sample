@@ -1,8 +1,8 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Formik } from 'formik';
-import { TextInput, SelectInput } from '../components';
+import { TextInput, SelectInput, Button } from '../components';
 
 function IncomeScreen() {
   const DATA = [
@@ -22,8 +22,11 @@ function IncomeScreen() {
 
   return (
     <View style={styles.container}>
-      <SelectInput label="Cat:" data={DATA} />
-      <TextInput placeholder={'Please enter type'} label={'Type:'} />
+      <KeyboardAwareScrollView>
+        <SelectInput label="Cat:" data={DATA} />
+        <TextInput placeholder="Please enter type" label="Type:" />
+        <Button label="on press"/>
+      </KeyboardAwareScrollView>
     </View>
   );
 }
