@@ -1,13 +1,16 @@
 import {
-  put, takeEvery
+  put, takeEvery, call
 } from 'redux-saga/effects';
-import { ADD_ITEM, ADD_DONE, START_FETCHING, ADD_ERROR, FETCHING_DONE, FETCHING_ERROR } from './type';
+import {
+  ADD_ITEM, ADD_DONE, START_FETCHING, ADD_ERROR, FETCHING_DONE, FETCHING_ERROR
+} from './type';
 import { apiPost, apiGet } from '../../services/api';
 
 function* addIncome(action) {
   try {
-    const newIncomes = yield apiPost(action.payload);
+    const newIncomes = yield apiPost(action.payload.income);
     yield put({ type: ADD_DONE, payload: newIncomes.data });
+    // yield call(action.goBack);
   } catch (error) {
     yield put({ type: FETCHING_ERROR, payload: error });
   }

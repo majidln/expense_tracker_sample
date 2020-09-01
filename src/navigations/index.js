@@ -12,7 +12,7 @@ function MainStackNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        initialRouteName="Income"
+        initialRouteName="Main"
         screenOptions={{
           headerTintColor: 'white',
           headerStyle: { backgroundColor: '#22a6b3' },

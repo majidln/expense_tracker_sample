@@ -1,5 +1,5 @@
 export default {
   list: [],
-  fething: false,
+  fetching: false,
   adding: false,
 };

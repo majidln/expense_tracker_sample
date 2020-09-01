@@ -10,7 +10,6 @@ import {
 import I18n from '../services/i18n';
 
 function IncomeScreen({ createNewIncom, income }) {
-  console.log('income', income)
   const initialValues = {
     amount: '',
     category: {},
@@ -23,7 +22,7 @@ function IncomeScreen({ createNewIncom, income }) {
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
-          createNewIncom(values)
+          createNewIncom({ income: values });
         }}
         validate={(values) => {
           const errors = {};
