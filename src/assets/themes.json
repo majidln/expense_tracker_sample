@@ -1,0 +1,14 @@
+{
+    "light": {
+        "primaryText": "#0b132b",
+        "backgroundColor": "#eff7f6",
+        "tabBarBackgroundColor": "#e6ebe0",
+        "tabBarActiveColor": "#02c39a"
+    },
+    "dark": {
+        "primaryText": "#98c1d9",
+        "backgroundColor": "#14213d",
+        "tabBarBackgroundColor": "#2b2d42",
+        "tabBarActiveColor": "#fcbf49"
+    }
+}
