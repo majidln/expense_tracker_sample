@@ -20,6 +20,7 @@ function IncomeScreen() {
       <Formik
         initialValues={initialValues}
         onSubmit={(values, { setSubmitting }) => {
+          setSubmitting(true)
           setTimeout(() => {
             setSubmitting(false);
           }, 400);
@@ -45,7 +46,8 @@ function IncomeScreen() {
           values,
           errors,
           setFieldValue,
-          handleSubmit
+          handleSubmit,
+          isSubmitting
         }) => (
           <View style={styles.formWrapper}>
             <KeyboardAwareScrollView style={styles.formScroll}>
@@ -80,7 +82,7 @@ function IncomeScreen() {
                 error={errors.description}
               />
             </KeyboardAwareScrollView>
-            <Button label={I18n.t('income.submit')} onPress={handleSubmit} />
+            <Button label={I18n.t('income.submit')} onPress={() => handleSubmit()} loading={isSubmitting}/>
           </View>
         )}
       </Formik>
