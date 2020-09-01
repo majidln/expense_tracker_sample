@@ -5,6 +5,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { withTheme } from '../providers/ThemeProviders';
 import I18n from '../services/i18n';
 
+Icon.loadFont();
+
 function MainScreen({ theme, navigation }) {
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>

@@ -7,6 +7,8 @@ import Modal from 'react-native-modal';
 import { isIphoneX } from '../utils/device';
 import i18n from '../services/i18n';
 
+Icon.loadFont();
+
 // data: get a list of item to show in select box as a modal
 // value: get selected itemText, itemValue
 function SelectInput(props) {
