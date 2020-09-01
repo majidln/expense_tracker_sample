@@ -12,7 +12,7 @@ function Button({
       onPress={() => onPress && !loading && onPress()}
     >
       {!loading
-        ? <Text style={[styles.label, { color: color || 'white' }]}>{label}</Text>
+        ? <Text style={[styles.label, { color }]}>{label}</Text>
         : <Loading />}
     </TouchableOpacity>
   );
@@ -37,6 +37,7 @@ Button.defaultProps = {
   label: '',
   loading: false,
   onPress: () => {},
+  color: 'white'
 };
 
 export default withTheme(Button);

@@ -5,7 +5,7 @@ import { TouchableOpacity } from 'react-native';
 import i18n from '../services/i18n';
 import { IonicIcon } from '../components';
 import MainScreen from '../screens/MainScreen';
-import SettingScreen from '../screens/SettingScreen';
+import SettingScreen from '../screens/Setting';
 import IncomeScreen from '../screens/Income';
 import OutcomeScreen from '../screens/Outcome';
 import ModalScreen from '../screens/ModalScreen';

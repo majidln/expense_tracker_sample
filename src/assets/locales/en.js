@@ -50,5 +50,18 @@ export default {
     selectInput: {
       defaultValue: 'Choose an options'
     }
+  },
+  setting: {
+    theme: {
+      to: {
+        light: 'Change to light theme',
+        dark: 'Change to dark theme'
+      }
+    },
+    language: {
+      title: 'Change language',
+      en: 'English',
+      fa: 'فارسی (Farsi)'
+    }
   }
 };
