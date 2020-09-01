@@ -16,7 +16,7 @@ function MainScreen({ theme, navigation }) {
           <Icon name="md-add" color="white" size={25} />
         </ActionButton.Item>
         <ActionButton.Item buttonColor={theme.expense} title={I18n.t('floatingMenu.expense')} onPress={() => {}}>
-          <Icon name="md-remove" color="white" size={25}/>
+          <Icon name="md-remove" color="white" size={25} />
         </ActionButton.Item>
       </ActionButton>
     </View>

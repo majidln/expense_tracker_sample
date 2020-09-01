@@ -65,7 +65,6 @@ function IncomeScreen() {
           </View>
         )}
       </Formik>
-
     </View>
   );
 }
