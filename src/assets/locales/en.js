@@ -16,11 +16,14 @@ export default {
     descriptionPlaceholder: 'Please enter description',
     category: 'Category',
     categoryPlaceholder: 'Please select category',
+    type: 'Type',
+    typePlaceholder: 'Please select type',
     submit: 'Subimt',
     errors: {
       amount: 'Amount is required',
       category: 'Category is required',
-      description: 'Description is required'
+      description: 'Description is required',
+      type: 'Type is required',
     }
   },
   components: {

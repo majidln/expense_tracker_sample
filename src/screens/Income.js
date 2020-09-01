@@ -3,15 +3,15 @@ import { StyleSheet, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Formik } from 'formik';
 import {
-  TextInput, Button, CategorySelect
+  TextInput, Button, CategorySelect, TypeSelect
 } from '../components';
 import I18n from '../services/i18n';
 
 function IncomeScreen() {
   const initialValues = {
     amount: '',
-    type: {},
     category: {},
+    type: {},
     description: '',
   };
 
@@ -32,10 +32,12 @@ function IncomeScreen() {
           if (!(values.category && values.category.id)) {
             errors.category = I18n.t('income.errors.category');
           }
+          if (!(values.type && values.type.id)) {
+            errors.type = I18n.t('income.errors.type');
+          }
           if (!values.description) {
             errors.description = I18n.t('income.errors.description');
           }
-          console.log('validation', values, errors)
           return errors;
         }}
       >
@@ -62,6 +64,13 @@ function IncomeScreen() {
                 onSelect={(cat) => setFieldValue('category', cat)}
                 value={values.category}
                 error={errors.category}
+              />
+              <TypeSelect
+                label={I18n.t('income.type')}
+                placeholder={I18n.t('income.typePlaceholder')}
+                onSelect={(type) => setFieldValue('type', type)}
+                value={values.type}
+                error={errors.type}
               />
               <TextInput
                 placeholder={I18n.t('income.descriptionPlaceholder')}

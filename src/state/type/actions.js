@@ -1,9 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import { START_FETCHING } from './type';
 
-export function getCategory(key = 'income') {
+export function getTypes() {
   return {
-    type: START_FETCHING,
-    key,
+    type: START_FETCHING
   };
 }
