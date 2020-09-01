@@ -13,7 +13,8 @@ export default {
     description: 'Description',
     descriptionPlaceholder: 'Please enter description',
     category: 'Category',
-    categoryPlaceholder: 'Please select category'
+    categoryPlaceholder: 'Please select category',
+    submit: 'Subimt'
   },
   components: {
     selectInput: {

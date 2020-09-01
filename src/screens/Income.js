@@ -44,22 +44,25 @@ function IncomeScreen() {
           setFieldValue
           /* and other goodies */
         }) => (
-          <KeyboardAwareScrollView>
-            <SelectInput
-              label={I18n.t('income.category')}
-              placeholder={I18n.t('income.categoryPlaceholder')}
-              data={DATA}
-              onSelect={(cat) => setFieldValue('category', cat)}
-              value={values.category}
-            />
-            <TextInput
-              placeholder={I18n.t('income.descriptionPlaceholder')}
-              label={I18n.t('income.description')}
-              value={values.description}
-              onChangeText={(text) => setFieldValue('description', text)}
-            />
-            <Button label="on press" />
-          </KeyboardAwareScrollView>
+          <View style={styles.formWrapper}>
+            <KeyboardAwareScrollView style={styles.formScroll}>
+              <SelectInput
+                label={I18n.t('income.category')}
+                placeholder={I18n.t('income.categoryPlaceholder')}
+                data={DATA}
+                onSelect={(cat) => setFieldValue('category', cat)}
+                value={values.category}
+              />
+              <TextInput
+                placeholder={I18n.t('income.descriptionPlaceholder')}
+                label={I18n.t('income.description')}
+                value={values.description}
+                onChangeText={(text) => setFieldValue('description', text)}
+              />
+
+            </KeyboardAwareScrollView>
+            <Button label={I18n.t('income.submit')} />
+          </View>
         )}
       </Formik>
 
@@ -70,6 +73,12 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 8
+  },
+  formWrapper: {
+    flex: 1
+  },
+  formScroll: {
+    flex: 1
   }
 });
 
