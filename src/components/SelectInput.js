@@ -13,18 +13,16 @@ function SelectInput(props) {
   const [visible, setVisible] = useState(false);
 
   const {
-    onSelect, value, itemText, itemValue, data, label, style
+    onSelect, value, itemText, itemValue, data, label, style, placeholder
   } = props;
 
   const onSelectItem = (item) => {
-    if (onSelect) {
-      onSelect(item);
-    }
+    onSelect(item);
     setVisible(false);
   };
 
   const renderItem = ({ item }) => (
-    <TouchableOpacity style={styles.itemWrapper} onPress={() => onSelectItem()}>
+    <TouchableOpacity style={styles.itemWrapper} onPress={() => onSelectItem(item)}>
       <Text style={styles.item}>{item.title}</Text>
     </TouchableOpacity>
   );
@@ -37,8 +35,8 @@ function SelectInput(props) {
     <View style={styles.wrapper}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TouchableOpacity onPress={() => setVisible(true)} style={styles.input}>
-        {value && value.itemValue ? <Text>{value && value.itemValue}</Text>
-          : <Text style={styles.placeholder}>{i18n.t('components.selectInput.defaultValue')}</Text>}
+        {value[itemValue] ? <Text>{value[itemValue]}</Text>
+          : <Text style={styles.placeholder}>{placeholder}</Text>}
         <Icon style={styles.optionIcon} name="ios-arrow-round-down" size={28} color="gray" />
       </TouchableOpacity>
       <Modal
@@ -161,5 +159,15 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
 });
+
+SelectInput.defaultProps = {
+  value: {},
+  data: {},
+  itemValue: 'title',
+  itemId: 'id',
+  label: '',
+  placeholder: i18n.t('components.selectInput.defaultValue'),
+  onSelect: () => {}
+};
 
 export default SelectInput;

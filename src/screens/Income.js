@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Formik } from 'formik';
 import { TextInput, SelectInput, Button } from '../components';
+import I18n from '../services/i18n';
 
 function IncomeScreen() {
   const DATA = [
@@ -20,13 +21,48 @@ function IncomeScreen() {
     },
   ];
 
+  const initialValues = {
+    amount: 0,
+    type: {},
+    category: {},
+    description: '',
+    time: ''
+  };
+
   return (
     <View style={styles.container}>
-      <KeyboardAwareScrollView>
-        <SelectInput label="Cat:" data={DATA} />
-        <TextInput placeholder="Please enter type" label="Type:" />
-        <Button label="on press"/>
-      </KeyboardAwareScrollView>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={(values, { setSubmitting }) => {
+          setTimeout(() => {
+            setSubmitting(false);
+          }, 400);
+        }}
+      >
+        {({
+          values,
+          setFieldValue
+          /* and other goodies */
+        }) => (
+          <KeyboardAwareScrollView>
+            <SelectInput
+              label={I18n.t('income.category')}
+              placeholder={I18n.t('income.categoryPlaceholder')}
+              data={DATA}
+              onSelect={(cat) => setFieldValue('category', cat)}
+              value={values.category}
+            />
+            <TextInput
+              placeholder={I18n.t('income.descriptionPlaceholder')}
+              label={I18n.t('income.description')}
+              value={values.description}
+              onChangeText={(text) => setFieldValue('description', text)}
+            />
+            <Button label="on press" />
+          </KeyboardAwareScrollView>
+        )}
+      </Formik>
+
     </View>
   );
 }
