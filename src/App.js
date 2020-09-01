@@ -1,22 +1,7 @@
 import 'react-native-gesture-handler';
-import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import MainStackNavigator from './navigations'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>App js</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+  return <MainStackNavigator />
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
