@@ -6,7 +6,6 @@ import SelectInput from './SelectInput';
 function CategorySelect({
   type, getCategories, categories, ...other
 }) {
-  console.log('categories', categories[type]);
   useEffect(() => {
     getCategories(type);
   }, []);

@@ -1,13 +1,16 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { connect } from 'react-redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Formik } from 'formik';
+import { addIncome } from '../state/income/actions';
 import {
   TextInput, Button, CategorySelect, TypeSelect
 } from '../components';
 import I18n from '../services/i18n';
 
-function IncomeScreen() {
+function IncomeScreen({ createNewIncom, income }) {
+  console.log('income', income)
   const initialValues = {
     amount: '',
     category: {},
@@ -19,16 +22,15 @@ function IncomeScreen() {
     <View style={styles.container}>
       <Formik
         initialValues={initialValues}
-        onSubmit={(values, { setSubmitting }) => {
-          setSubmitting(true)
-          setTimeout(() => {
-            setSubmitting(false);
-          }, 400);
+        onSubmit={(values) => {
+          createNewIncom(values)
         }}
         validate={(values) => {
           const errors = {};
           if (!values.amount) {
             errors.amount = I18n.t('income.errors.amount');
+          } else if (isNaN(values.amount)) {
+            errors.amount = I18n.t('income.errors.amountFormat');
           }
           if (!(values.category && values.category.id)) {
             errors.category = I18n.t('income.errors.category');
@@ -47,10 +49,9 @@ function IncomeScreen() {
           errors,
           setFieldValue,
           handleSubmit,
-          isSubmitting
         }) => (
           <View style={styles.formWrapper}>
-            <KeyboardAwareScrollView style={styles.formScroll}>
+            <KeyboardAwareScrollView style={styles.formScroll} keyboardShouldPersistTaps="handled">
               <TextInput
                 placeholder={I18n.t('income.amountPlaceholder')}
                 label={I18n.t('income.amount')}
@@ -82,7 +83,7 @@ function IncomeScreen() {
                 error={errors.description}
               />
             </KeyboardAwareScrollView>
-            <Button label={I18n.t('income.submit')} onPress={() => handleSubmit()} loading={isSubmitting}/>
+            <Button label={I18n.t('income.submit')} onPress={() => handleSubmit()} loading={income.adding} />
           </View>
         )}
       </Formik>
@@ -102,4 +103,16 @@ const styles = StyleSheet.create({
   }
 });
 
-export default IncomeScreen;
+function mapStateToProps(state) {
+  return {
+    income: state.income
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    createNewIncom: (income) => dispatch(addIncome(income))
+  };
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(IncomeScreen);

@@ -1,4 +1,4 @@
 export default {
-  fething: false,
+  fetching: false,
   list: []
 };

@@ -21,6 +21,7 @@ export default {
     submit: 'Subimt',
     errors: {
       amount: 'Amount is required',
+      amountFormat: 'Amount is not valid',
       category: 'Category is required',
       description: 'Description is required',
       type: 'Type is required',
