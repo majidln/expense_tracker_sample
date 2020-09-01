@@ -1,0 +1,12 @@
+{
+  "name": "sample_expense",
+  "displayName": "sample_expense",
+  "expo": {
+    "name": "sample_expense",
+    "slug": "sample_expense",
+    "version": "1.0.0",
+    "assetBundlePatterns": [
+      "**/*"
+    ]
+  }
+}
