@@ -1,12 +1,12 @@
-import React from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 function SettingScreen() {
   return (
     <View style={styles.container}>
       <Text>Setting Screen</Text>
     </View>
-  )
+  );
 }
 const styles = StyleSheet.create({
   container: {
@@ -15,6 +15,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   }
-})
+});
 
 export default SettingScreen;
