@@ -5,7 +5,7 @@ import {
 
 function TextInput(props) {
   const {
-    onChangeText, value, label, style, ...other
+    onChangeText, value, label, error, style, ...other
   } = props;
   return (
     <View style={styles.wrapper}>
@@ -16,6 +16,7 @@ function TextInput(props) {
         onChangeText={(text) => onChangeText && onChangeText(text)}
         value={value}
       />
+      {error && <Text style={styles.error}>{error}</Text>}
     </View>
   );
 }
@@ -29,7 +30,17 @@ const styles = StyleSheet.create({
     textAlign: 'left'
   },
   input: {
-    height: 50, backgroundColor: 'white', borderColor: 'lightgray', padding: 14, borderRadius: 8, borderWidth: 1, fontSize: 18
+    height: 50,
+    backgroundColor: 'white',
+    borderColor: 'lightgray',
+    padding: 14,
+    borderRadius: 8,
+    borderWidth: 1,
+    fontSize: 18
+  },
+  error: {
+    color: 'red',
+    fontSize: 14
   }
 });
 

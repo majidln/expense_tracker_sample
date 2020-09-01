@@ -13,7 +13,6 @@ function IncomeScreen() {
     type: {},
     category: {},
     description: '',
-    time: ''
   };
 
   return (
@@ -25,11 +24,26 @@ function IncomeScreen() {
             setSubmitting(false);
           }, 400);
         }}
+        validate={(values) => {
+          const errors = {};
+          if (!values.amount) {
+            errors.amount = I18n.t('income.errors.amount');
+          }
+          if (!(values.category && values.category.id)) {
+            errors.category = I18n.t('income.errors.category');
+          }
+          if (!values.description) {
+            errors.description = I18n.t('income.errors.description');
+          }
+          console.log('validation', values, errors)
+          return errors;
+        }}
       >
         {({
           values,
-          setFieldValue
-          /* and other goodies */
+          errors,
+          setFieldValue,
+          handleSubmit
         }) => (
           <View style={styles.formWrapper}>
             <KeyboardAwareScrollView style={styles.formScroll}>
@@ -39,6 +53,7 @@ function IncomeScreen() {
                 value={values.amount}
                 onChangeText={(text) => setFieldValue('amount', text)}
                 keyboardType="numeric"
+                error={errors.amount}
               />
               <CategorySelect
                 type="income"
@@ -46,15 +61,17 @@ function IncomeScreen() {
                 placeholder={I18n.t('income.categoryPlaceholder')}
                 onSelect={(cat) => setFieldValue('category', cat)}
                 value={values.category}
+                error={errors.category}
               />
               <TextInput
                 placeholder={I18n.t('income.descriptionPlaceholder')}
                 label={I18n.t('income.description')}
                 value={values.description}
                 onChangeText={(text) => setFieldValue('description', text)}
+                error={errors.description}
               />
             </KeyboardAwareScrollView>
-            <Button label={I18n.t('income.submit')} />
+            <Button label={I18n.t('income.submit')} onPress={handleSubmit} />
           </View>
         )}
       </Formik>

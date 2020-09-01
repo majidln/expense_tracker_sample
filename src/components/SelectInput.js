@@ -15,7 +15,7 @@ function SelectInput(props) {
   const [visible, setVisible] = useState(false);
 
   const {
-    onSelect, value, itemText, itemValue, data, label, style, placeholder
+    onSelect, value, itemText, itemValue, data, label, error, placeholder
   } = props;
 
   const onSelectItem = (item) => {
@@ -41,6 +41,7 @@ function SelectInput(props) {
           : <Text style={styles.placeholder}>{placeholder}</Text>}
         <Icon style={styles.optionIcon} name="chevron-down-outline" size={28} color="gray" />
       </TouchableOpacity>
+      {error && <Text style={styles.error}>{error}</Text>}
       <Modal
         animationType="slide"
         transparent
@@ -95,6 +96,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     fontSize: 18
+  },
+  error: {
+    color: 'red',
+    fontSize: 14
   },
   optionIcon: {
     position: 'absolute',
