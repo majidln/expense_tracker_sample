@@ -2,12 +2,10 @@ import React, { useState } from 'react';
 import {
   StyleSheet, View, Text, TouchableOpacity, FlatList
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import Modal from 'react-native-modal';
+import IonicIcon from './Icon'
 import { isIphoneX } from '../utils/device';
 import i18n from '../services/i18n';
-
-Icon.loadFont();
 
 // data: get a list of item to show in select box as a modal
 // value: get selected itemText, itemValue
@@ -39,7 +37,7 @@ function SelectInput(props) {
       <TouchableOpacity onPress={() => setVisible(true)} style={styles.input}>
         {value[itemValue] ? <Text style={styles.value}>{value[itemValue]}</Text>
           : <Text style={styles.placeholder}>{placeholder}</Text>}
-        <Icon style={styles.optionIcon} name="chevron-down-outline" size={28} color="gray" />
+        <IonicIcon style={styles.optionIcon} name="chevron-down-outline" size={28} color="gray" />
       </TouchableOpacity>
       {error && <Text style={styles.error}>{error}</Text>}
       <Modal
@@ -60,7 +58,7 @@ function SelectInput(props) {
                 style={styles.closeBtn}
                 onPress={() => setVisible(false)}
               >
-                <Icon name="md-close" color="white" size={25} />
+                <IonicIcon name="md-close" color="white" size={25} />
               </TouchableOpacity>
             </View>
             <FlatList
