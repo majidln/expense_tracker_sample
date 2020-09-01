@@ -3,5 +3,10 @@ export default {
   floatingMenu: {
     income: 'Income',
     expense: 'Expense'
+  },
+  navigation: {
+    home: 'Home',
+    setting: 'Setting',
+    income: 'Income',
   }
 };

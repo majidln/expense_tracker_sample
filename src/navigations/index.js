@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-
+import i18n from '../services/i18n';
 import MainScreen from '../screens/MainScreen';
 import SettingScreen from '../screens/SettingScreen';
 import IncomeScreen from '../screens/Income';
@@ -12,9 +12,9 @@ function MainStackNavigator() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="Main" component={MainScreen} />
-        <Stack.Screen name="Setting" component={SettingScreen} />
-        <Stack.Screen name="Income" component={IncomeScreen} />
+        <Stack.Screen name="Main" component={MainScreen} options={{ title: i18n.t('navigation.home') }} />
+        <Stack.Screen name="Setting" component={SettingScreen} options={{ title: i18n.t('navigation.setting') }} />
+        <Stack.Screen name="Income" component={IncomeScreen} options={{ title: i18n.t('navigation.income') }} />
         <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Navigator>
     </NavigationContainer>
