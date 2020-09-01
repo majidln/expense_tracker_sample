@@ -3,20 +3,20 @@ import { StyleSheet, Text, View } from 'react-native';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { withTheme } from '../providers/ThemeProviders';
+import I18n from '../services/i18n';
 
 function MainScreen({ theme }) {
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
-      <Text styles={{ color: theme.primaryText }}>Main Screen</Text>
-      <ActionButton buttonColor="rgba(231,76,60,1)">
-        <ActionButton.Item buttonColor="#9b59b6" title="New Task" onPress={() => console.log('notes tapped!')}>
-          <Icon name="md-create" style={styles.actionButtonIcon} />
+      <Text styles={{ color: theme.primaryText }}>
+        {I18n.t('greeting')}
+      </Text>
+      <ActionButton buttonColor={theme.floatingMenu}>
+        <ActionButton.Item buttonColor={theme.income} title={I18n.t('floatingMenu.income')} onPress={() => console.log('notes tapped!')}>
+          <Icon name="md-add" color="white" size={25} />
         </ActionButton.Item>
-        <ActionButton.Item buttonColor="#3498db" title="Notifications" onPress={() => {}}>
-          <Icon name="md-notifications-off" style={styles.actionButtonIcon} />
-        </ActionButton.Item>
-        <ActionButton.Item buttonColor="#1abc9c" title="All Tasks" onPress={() => {}}>
-          <Icon name="md-done-all" style={styles.actionButtonIcon} />
+        <ActionButton.Item buttonColor={theme.expense} title={I18n.t('floatingMenu.expense')} onPress={() => {}}>
+          <Icon name="md-remove" color="white" size={25}/>
         </ActionButton.Item>
       </ActionButton>
     </View>
@@ -25,7 +25,7 @@ function MainScreen({ theme }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-  }
+  },
 });
 
 export default withTheme(MainScreen);
