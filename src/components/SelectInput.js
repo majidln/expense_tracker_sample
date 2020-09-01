@@ -39,7 +39,7 @@ function SelectInput(props) {
       <TouchableOpacity onPress={() => setVisible(true)} style={styles.input}>
         {value[itemValue] ? <Text>{value[itemValue]}</Text>
           : <Text style={styles.placeholder}>{placeholder}</Text>}
-        <Icon style={styles.optionIcon} name="ios-arrow-round-down" size={28} color="gray" />
+        <Icon style={styles.optionIcon} name="chevron-down-outline" size={28} color="gray" />
       </TouchableOpacity>
       <Modal
         animationType="slide"
@@ -66,7 +66,7 @@ function SelectInput(props) {
               data={data || []}
               renderItem={(row) => renderItem(row)}
               ItemSeparatorComponent={() => renderItemSeperator()}
-              keyExtractor={(row) => row.id}
+              keyExtractor={(row) => `${row.id}`}
             />
           </View>
         </View>

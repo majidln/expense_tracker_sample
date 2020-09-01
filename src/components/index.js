@@ -1,7 +1,8 @@
-// eslint-disable-next-line import/named
 import TextInput from './TextInput';
 import SelectInput from './SelectInput';
 import Button from './Button';
+import CategorySelect from './CategorySelect';
 
-// eslint-disable-next-line import/prefer-default-export
-export { TextInput, SelectInput, Button };
+export {
+  TextInput, SelectInput, Button, CategorySelect
+};

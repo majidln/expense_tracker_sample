@@ -10,6 +10,8 @@ export default {
     income: 'Income',
   },
   income: {
+    amount: 'Amount',
+    amountPlaceholder: 'Please enter amount',
     description: 'Description',
     descriptionPlaceholder: 'Please enter description',
     category: 'Category',

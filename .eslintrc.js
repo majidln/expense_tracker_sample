@@ -14,8 +14,10 @@ module.exports = {
     'eslint-disable-next-line': 'off',
     'react/jsx-props-no-spreading': 'off',
     eqeqeq: 'off',
+    'import/prefer-default-export': 'off',
+    'global-require': 'off'
   },
   globals: {
-    fetch: false
+    fetch: false,
   }
 };

@@ -1,21 +1,19 @@
 import {
-  race, put, delay, takeEvery
+  put, takeEvery
 } from 'redux-saga/effects';
 import { START_FETCHING, FETCHING_DONE, FETCHING_ERROR } from './type';
+import { apiGet } from '../../services/api';
 
 function* fetchCategory(action) {
   const { key } = action;
-  const { categories } = yield race({
-    categories: [
-      { title: 'POST ARRAY 1' }
-    ],
-    timeout: delay(5000)
-  });
-
-  if (categories) yield put({ type: FETCHING_DONE, payload: categories, key });
-  else yield put({ type: FETCHING_ERROR, key });
+  try {
+    const categories = yield apiGet(require('../../assets/data/categories.json'));
+    yield put({ type: FETCHING_DONE, payload: categories.data[key], key });
+  } catch (error) {
+    yield put({ type: FETCHING_ERROR, key });
+  }
 }
 
-export default [
+export const categorySaga = [
   takeEvery(START_FETCHING, fetchCategory),
 ];

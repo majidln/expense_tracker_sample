@@ -1,0 +1,46 @@
+{
+    "income": [
+        {
+            "id": 1,
+            "title": "Cash"
+        },
+        {
+            "id": 2,
+            "title": "Loan"
+        },
+        {
+            "id": 3,
+            "title": "Loan"
+        },
+        {
+            "id": 4,
+            "title": "Debt"
+        }
+    ],
+    "outcome": [
+        {
+            "id": 1,
+            "title": "Food"
+        },
+        {
+            "id": 2,
+            "title": "Car"
+        },
+        {
+            "id": 3,
+            "title": "Health"
+        },
+        {
+            "id": 4,
+            "title": "Book"
+        },
+        {
+            "id": 5,
+            "title": "Gadget"
+        },
+        {
+            "id": 6,
+            "title": "Taxi"
+        }
+    ]
+}
