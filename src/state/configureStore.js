@@ -11,7 +11,7 @@ const sagaMiddleware = createSagaMiddleware();
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
-  whitelist: []
+  whitelist: ['income']
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

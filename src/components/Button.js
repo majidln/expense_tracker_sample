@@ -1,16 +1,19 @@
 import React from 'react';
 import { StyleSheet, Text, TouchableOpacity } from 'react-native';
 import { withTheme } from '../providers/ThemeProviders';
+import Loading from './Loading';
 
 function Button({
-  label, onPress, style, bgColor, color, theme
+  label, onPress, style, bgColor, color, theme, loading
 }) {
   return (
     <TouchableOpacity
       style={[styles.container, style, { backgroundColor: bgColor || theme.mainButton }]}
-      onPress={() => onPress && onPress()}
+      onPress={() => onPress && !loading && onPress()}
     >
-      <Text style={[styles.label, { color: color || 'white' }]}>{label}</Text>
+      {!loading
+        ? <Text style={[styles.label, { color: color || 'white' }]}>{label}</Text>
+        : <Loading />}
     </TouchableOpacity>
   );
 }
@@ -21,10 +24,19 @@ const styles = StyleSheet.create({
     padding: 14,
     borderRadius: 8,
     borderWidth: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
   },
   label: {
     fontSize: 18,
     textAlign: 'center'
   }
 });
+
+Button.defaultProps = {
+  label: '',
+  loading: false,
+  onPress: () => {},
+};
+
 export default withTheme(Button);

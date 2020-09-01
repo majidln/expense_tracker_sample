@@ -1,36 +1,36 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-import { getCategory } from '../state/category/actions';
+import { getTypes } from '../state/type/actions';
 import SelectInput from './SelectInput';
 
-function CategorySelect({
-  type, getCategories, categories, ...other
+function TypeSelect({
+  fetchTypes, types, ...other
 }) {
   useEffect(() => {
-    getCategories(type);
+    fetchTypes();
   }, []);
 
   return (
     <SelectInput
       {...other}
-      data={categories[type].list}
+      data={types.list}
     />
   );
 }
 
 function mapStateToProps(state) {
   return {
-    categories: state.categories
+    types: state.types
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getCategories: (key) => dispatch(getCategory(key))
+    fetchTypes: (key) => dispatch(getTypes(key))
   };
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(CategorySelect);
+)(TypeSelect);

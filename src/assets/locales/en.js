@@ -16,7 +16,16 @@ export default {
     descriptionPlaceholder: 'Please enter description',
     category: 'Category',
     categoryPlaceholder: 'Please select category',
-    submit: 'Subimt'
+    type: 'Type',
+    typePlaceholder: 'Please select type',
+    submit: 'Subimt',
+    errors: {
+      amount: 'Amount is required',
+      amountFormat: 'Amount is not valid',
+      category: 'Category is required',
+      description: 'Description is required',
+      type: 'Type is required',
+    }
   },
   components: {
     selectInput: {

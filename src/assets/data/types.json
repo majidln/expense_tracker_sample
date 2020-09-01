@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1,
+        "title": "Card 1"
+    },
+    {
+        "id": 2,
+        "title": "Credit"
+    },
+    {
+        "id": 3,
+        "title": "Card 2"
+    },
+    {
+        "id": 4,
+        "title": "Saving"
+    },
+    {
+        "id": 5,
+        "title": "Shared Account"
+    }
+]

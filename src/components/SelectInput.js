@@ -15,7 +15,7 @@ function SelectInput(props) {
   const [visible, setVisible] = useState(false);
 
   const {
-    onSelect, value, itemText, itemValue, data, label, style, placeholder
+    onSelect, value, itemText, itemValue, data, label, error, placeholder
   } = props;
 
   const onSelectItem = (item) => {
@@ -37,10 +37,11 @@ function SelectInput(props) {
     <View style={styles.wrapper}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TouchableOpacity onPress={() => setVisible(true)} style={styles.input}>
-        {value[itemValue] ? <Text>{value[itemValue]}</Text>
+        {value[itemValue] ? <Text style={styles.value}>{value[itemValue]}</Text>
           : <Text style={styles.placeholder}>{placeholder}</Text>}
         <Icon style={styles.optionIcon} name="chevron-down-outline" size={28} color="gray" />
       </TouchableOpacity>
+      {error && <Text style={styles.error}>{error}</Text>}
       <Modal
         animationType="slide"
         transparent
@@ -83,6 +84,9 @@ const styles = StyleSheet.create({
     marginBottom: 4,
     textAlign: 'left'
   },
+  value: {
+    fontSize: 16
+  },
   placeholder: {
     color: 'gray',
     fontSize: 16
@@ -95,6 +99,10 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     borderWidth: 1,
     fontSize: 18
+  },
+  error: {
+    color: 'red',
+    fontSize: 14
   },
   optionIcon: {
     position: 'absolute',
@@ -136,7 +144,8 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   item: {
-    textAlign: 'left'
+    textAlign: 'left',
+    fontSize: 16
   },
   modalTitleWrapper: {
     backgroundColor: '#22a6b3',
