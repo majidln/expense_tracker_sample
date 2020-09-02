@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, ScrollView } from 'react-native';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { useTranslation } from 'react-i18next';
@@ -21,20 +21,25 @@ function MainScreen({
 
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
-      <View style={styles.statisticWrapper}>
-        <StatisticBox
-          style={[styles.statisticBox, { backgroundColor: theme.incomeBox }]}
-          loading={statistics.fetching}
-          statistics={statistics.income}
-          icon="add-circle-outline"
-        />
-        <StatisticBox
-          style={[styles.statisticBox, { backgroundColor: theme.outcomeBox }]}
-          loading={statistics.fetching}
-          statistics={statistics.outcome}
-          icon="remove-circle-outline"
-        />
-      </View>
+      <ScrollView style={styles.scrollWrapper}>
+        <View style={styles.contentWrapper}>
+          <View style={styles.statisticWrapper}>
+            <StatisticBox
+              style={[styles.statisticBox, { backgroundColor: theme.incomeBox }]}
+              loading={statistics.fetching}
+              statistics={statistics.income}
+              icon="add-circle-outline"
+            />
+            <StatisticBox
+              style={[styles.statisticBox, { backgroundColor: theme.outcomeBox }]}
+              loading={statistics.fetching}
+              statistics={statistics.outcome}
+              icon="remove-circle-outline"
+            />
+          </View>
+        </View>
+      </ScrollView>
+
       <ActionButton buttonColor={theme.floatingMenu}>
         <ActionButton.Item buttonColor={theme.income} title={t('floatingMenu.income')} onPress={() => navigation.navigate('Income')}>
           <Icon name="md-add" color="white" size={25} />
@@ -50,7 +55,13 @@ function MainScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  scrollWrapper: {
+    flex: 1,
     padding: 8
+  },
+  contentWrapper: {
+    flex: 1
   },
   statisticWrapper: {
     flexDirection: 'row',
