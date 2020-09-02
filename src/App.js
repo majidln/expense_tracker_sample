@@ -6,6 +6,8 @@ import { store, persistor } from './state/configureStore';
 import MainStackNavigator from './navigations';
 import { ThemeContextProvider } from './providers/ThemeProviders';
 
+require('./services/i18n');
+
 export default function App() {
   return (
     <Provider store={store}>

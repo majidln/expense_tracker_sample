@@ -1,34 +1,35 @@
 import React from 'react';
 import { StyleSheet, View } from 'react-native';
+import { useTranslation } from 'react-i18next';
 import { Button, Label } from '../components';
 import { withTheme } from '../providers/ThemeProviders';
-import I18n from '../services/i18n';
 
 function SettingScreen({ theme, themeID, switchTheme }) {
+  const { t } = useTranslation();
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
       <View>
         <Button
           onPress={() => switchTheme()}
-          label={I18n.t(`setting.theme.to.${themeID === 'light' ? 'dark' : 'light'}`)}
+          label={t(`setting.theme.to.${themeID === 'light' ? 'dark' : 'light'}`)}
           bgColor={theme.switchThemeButtonBg}
           color={theme.switchThemeButton}
         />
       </View>
       <View style={styles.languageWrapper}>
         <Label style={styles.switchLanguageText}>
-          {I18n.t('setting.language.title')}
+          {t('setting.language.title')}
         </Label>
         <View style={styles.switchLanugeWrapper}>
           <Button
             style={styles.enButton}
-            onPress={() => { I18n.locale = 'en'; }}
-            label={I18n.t('setting.language.en')}
+            onPress={() => { locale = 'en'; }}
+            label={t('setting.language.en')}
           />
           <Button
             style={styles.faButton}
-            onPress={() => { I18n.locale = 'fa'; }}
-            label={I18n.t('setting.language.fa')}
+            onPress={() => { locale = 'fa'; }}
+            label={t('setting.language.fa')}
           />
         </View>
       </View>

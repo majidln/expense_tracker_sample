@@ -7,7 +7,6 @@ import { withTheme } from '../providers/ThemeProviders';
 import IonicIcon from './Icon';
 import Label from './Label';
 import { isIphoneX } from '../utils/device';
-import i18n from '../services/i18n';
 
 // data: get a list of item to show in select box as a modal
 // value: get selected itemText, itemValue
@@ -178,7 +177,6 @@ SelectInput.defaultProps = {
   itemValue: 'title',
   itemId: 'id',
   label: '',
-  placeholder: i18n.t('components.selectInput.defaultValue'),
   onSelect: () => {},
 };
 

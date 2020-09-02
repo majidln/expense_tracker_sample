@@ -3,14 +3,16 @@ import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Formik } from 'formik';
+import { useTranslation } from 'react-i18next';
 import { addIncome } from '../state/income/actions';
 import { withTheme } from '../providers/ThemeProviders';
 import {
   TextInput, Button, CategorySelect, TypeSelect
 } from '../components';
-import I18n from '../services/i18n';
 
 function IncomeScreen({ theme, createNewIncom, income }) {
+  const { t } = useTranslation();
+
   const initialValues = {
     amount: '',
     category: {},
@@ -28,18 +30,18 @@ function IncomeScreen({ theme, createNewIncom, income }) {
         validate={(values) => {
           const errors = {};
           if (!values.amount) {
-            errors.amount = I18n.t('income.errors.amount');
+            errors.amount = t('income.errors.amount');
           } else if (isNaN(values.amount)) {
-            errors.amount = I18n.t('income.errors.amountFormat');
+            errors.amount = t('income.errors.amountFormat');
           }
           if (!(values.category && values.category.id)) {
-            errors.category = I18n.t('income.errors.category');
+            errors.category = t('income.errors.category');
           }
           if (!(values.type && values.type.id)) {
-            errors.type = I18n.t('income.errors.type');
+            errors.type = t('income.errors.type');
           }
           if (!values.description) {
-            errors.description = I18n.t('income.errors.description');
+            errors.description = t('income.errors.description');
           }
           return errors;
         }}
@@ -53,8 +55,8 @@ function IncomeScreen({ theme, createNewIncom, income }) {
           <View style={styles.formWrapper}>
             <KeyboardAwareScrollView style={styles.formScroll} keyboardShouldPersistTaps="handled">
               <TextInput
-                placeholder={I18n.t('income.amountPlaceholder')}
-                label={I18n.t('income.amount')}
+                placeholder={t('income.amountPlaceholder')}
+                label={t('income.amount')}
                 value={values.amount}
                 onChangeText={(text) => setFieldValue('amount', text)}
                 keyboardType="numeric"
@@ -62,28 +64,28 @@ function IncomeScreen({ theme, createNewIncom, income }) {
               />
               <CategorySelect
                 type="income"
-                label={I18n.t('income.category')}
-                placeholder={I18n.t('income.categoryPlaceholder')}
+                label={t('income.category')}
+                placeholder={t('income.categoryPlaceholder')}
                 onSelect={(cat) => setFieldValue('category', cat)}
                 value={values.category}
                 error={errors.category}
               />
               <TypeSelect
-                label={I18n.t('income.type')}
-                placeholder={I18n.t('income.typePlaceholder')}
+                label={t('income.type')}
+                placeholder={t('income.typePlaceholder')}
                 onSelect={(type) => setFieldValue('type', type)}
                 value={values.type}
                 error={errors.type}
               />
               <TextInput
-                placeholder={I18n.t('income.descriptionPlaceholder')}
-                label={I18n.t('income.description')}
+                placeholder={t('income.descriptionPlaceholder')}
+                label={t('income.description')}
                 value={values.description}
                 onChangeText={(text) => setFieldValue('description', text)}
                 error={errors.description}
               />
             </KeyboardAwareScrollView>
-            <Button label={I18n.t('income.submit')} onPress={() => handleSubmit()} loading={income.adding} />
+            <Button label={t('income.submit')} onPress={() => handleSubmit()} loading={income.adding} />
           </View>
         )}
       </Formik>

@@ -3,14 +3,16 @@ import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Formik } from 'formik';
+import { useTranslation } from 'react-i18next';
 import { withTheme } from '../providers/ThemeProviders';
 import { addOutcome } from '../state/outcome/actions';
 import {
   TextInput, Button, CategorySelect, TypeSelect
 } from '../components';
-import I18n from '../services/i18n';
 
 function OutcomeScreen({ theme, createNewIncom, outcome }) {
+  const { t } = useTranslation();
+
   const initialValues = {
     amount: '',
     category: {},
@@ -28,18 +30,18 @@ function OutcomeScreen({ theme, createNewIncom, outcome }) {
         validate={(values) => {
           const errors = {};
           if (!values.amount) {
-            errors.amount = I18n.t('outcome.errors.amount');
+            errors.amount = t('outcome.errors.amount');
           } else if (isNaN(values.amount)) {
-            errors.amount = I18n.t('outcome.errors.amountFormat');
+            errors.amount = t('outcome.errors.amountFormat');
           }
           if (!(values.category && values.category.id)) {
-            errors.category = I18n.t('outcome.errors.category');
+            errors.category = t('outcome.errors.category');
           }
           if (!(values.type && values.type.id)) {
-            errors.type = I18n.t('outcome.errors.type');
+            errors.type = t('outcome.errors.type');
           }
           if (!values.description) {
-            errors.description = I18n.t('outcome.errors.description');
+            errors.description = t('outcome.errors.description');
           }
           return errors;
         }}
@@ -53,8 +55,8 @@ function OutcomeScreen({ theme, createNewIncom, outcome }) {
           <View style={styles.formWrapper}>
             <KeyboardAwareScrollView style={styles.formScroll} keyboardShouldPersistTaps="handled">
               <TextInput
-                placeholder={I18n.t('outcome.amountPlaceholder')}
-                label={I18n.t('outcome.amount')}
+                placeholder={t('outcome.amountPlaceholder')}
+                label={t('outcome.amount')}
                 value={values.amount}
                 onChangeText={(text) => setFieldValue('amount', text)}
                 keyboardType="numeric"
@@ -62,28 +64,28 @@ function OutcomeScreen({ theme, createNewIncom, outcome }) {
               />
               <CategorySelect
                 type="outcome"
-                label={I18n.t('outcome.category')}
-                placeholder={I18n.t('outcome.categoryPlaceholder')}
+                label={t('outcome.category')}
+                placeholder={t('outcome.categoryPlaceholder')}
                 onSelect={(cat) => setFieldValue('category', cat)}
                 value={values.category}
                 error={errors.category}
               />
               <TypeSelect
-                label={I18n.t('outcome.type')}
-                placeholder={I18n.t('outcome.typePlaceholder')}
+                label={t('outcome.type')}
+                placeholder={t('outcome.typePlaceholder')}
                 onSelect={(type) => setFieldValue('type', type)}
                 value={values.type}
                 error={errors.type}
               />
               <TextInput
-                placeholder={I18n.t('outcome.descriptionPlaceholder')}
-                label={I18n.t('outcome.description')}
+                placeholder={t('outcome.descriptionPlaceholder')}
+                label={t('outcome.description')}
                 value={values.description}
                 onChangeText={(text) => setFieldValue('description', text)}
                 error={errors.description}
               />
             </KeyboardAwareScrollView>
-            <Button label={I18n.t('outcome.submit')} onPress={() => handleSubmit()} loading={outcome.adding} />
+            <Button label={t('outcome.submit')} onPress={() => handleSubmit()} loading={outcome.adding} />
           </View>
         )}
       </Formik>
