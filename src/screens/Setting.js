@@ -3,10 +3,9 @@ import { StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Button, Label } from '../components';
 import { withTheme } from '../providers/ThemeProviders';
-import i18n from '../services/i18n';
 
 function SettingScreen({ theme, themeID, switchTheme }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
       <View>

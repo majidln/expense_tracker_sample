@@ -1,5 +1,4 @@
 export default {
-  greeting: 'Hi!',
   floatingMenu: {
     income: 'Income',
     outcome: 'Outcome'
