@@ -14,12 +14,20 @@ function SelectInput(props) {
   const [visible, setVisible] = useState(false);
 
   const {
-    onSelect, value, itemValue, data, label, error, placeholder, theme
+    onSelect, value, itemValue, data, label, error, placeholder, theme, onBlur
   } = props;
 
   const onSelectItem = (item) => {
+    closeModal();
     onSelect(item);
+  };
+
+  const closeModal = () => {
     setVisible(false);
+    // simulate blur event for select box
+    if (onBlur) {
+      onBlur();
+    }
   };
 
   const renderItem = ({ item }) => (
@@ -48,7 +56,7 @@ function SelectInput(props) {
         animationType="slide"
         transparent
         visible={visible}
-        onBackdropPress={() => setVisible(false)}
+        onBackdropPress={() => closeModal()}
         style={{
           justifyContent: 'flex-end',
           margin: 0,
@@ -60,7 +68,7 @@ function SelectInput(props) {
               <Label style={styles.modalTitle}>{label}</Label>
               <TouchableOpacity
                 style={styles.closeBtn}
-                onPress={() => setVisible(false)}
+                onPress={() => closeModal()}
               >
                 <IonicIcon name="md-close" color="white" size={25} />
               </TouchableOpacity>

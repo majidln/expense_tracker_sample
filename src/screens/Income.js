@@ -57,7 +57,9 @@ function IncomeScreen({
         {({
           values,
           errors,
+          touched,
           setFieldValue,
+          setFieldTouched,
           handleSubmit,
         }) => (
           <View style={styles.formWrapper}>
@@ -68,7 +70,8 @@ function IncomeScreen({
                 value={values.amount}
                 onChangeText={(text) => setFieldValue('amount', text)}
                 keyboardType="numeric"
-                error={errors.amount}
+                error={touched.amount && errors.amount}
+                onBlur={() => setFieldTouched('amount')}
               />
               <CategorySelect
                 type="income"
@@ -76,21 +79,24 @@ function IncomeScreen({
                 placeholder={t('income.categoryPlaceholder')}
                 onSelect={(cat) => setFieldValue('category', cat)}
                 value={values.category}
-                error={errors.category}
+                error={touched.category && errors.category}
+                onBlur={() => setFieldTouched('category')}
               />
               <TypeSelect
                 label={t('income.type')}
                 placeholder={t('income.typePlaceholder')}
                 onSelect={(type) => setFieldValue('type', type)}
                 value={values.type}
-                error={errors.type}
+                error={touched.type && errors.type}
+                onBlur={() => setFieldTouched('type')}
               />
               <TextInput
                 placeholder={t('income.descriptionPlaceholder')}
                 label={t('income.description')}
                 value={values.description}
                 onChangeText={(text) => setFieldValue('description', text)}
-                error={errors.description}
+                error={touched.description && errors.description}
+                onBlur={() => setFieldTouched('description')}
               />
             </KeyboardAwareScrollView>
             <Button label={t('income.submit')} onPress={() => handleSubmit()} loading={income.adding} />
