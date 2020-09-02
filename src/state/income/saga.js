@@ -2,13 +2,15 @@ import {
   put, takeEvery
 } from 'redux-saga/effects';
 import {
-  ADD_ITEM, ADD_DONE, START_FETCHING, ADD_ERROR, FETCHING_DONE, FETCHING_ERROR
+  ADD_ITEM, ADD_DONE, FETCHING_ERROR
 } from './type';
-import { apiPost, apiGet } from '../../services/api';
+import { apiPost } from '../../services/api';
 
 function* addIncome(action) {
   try {
-    const newIncomes = yield apiPost(action.payload.income);
+    const now = new Date();
+    const created = `${now.getMonth()}/${now.getDay()}/${now.getFullYear()}-${now.getHours()}:${now.getMinutes()}`;
+    const newIncomes = yield apiPost({ ...action.payload.income, created });
     yield put({ type: ADD_DONE, payload: newIncomes.data });
     // yield call(action.goBack);
   } catch (error) {
@@ -16,16 +18,6 @@ function* addIncome(action) {
   }
 }
 
-function* getIncomes() {
-  try {
-    const incomes = yield apiGet(require('../../assets/data/categories.json'));
-    yield put({ type: FETCHING_DONE, payload: incomes });
-  } catch (error) {
-    yield put({ type: ADD_ERROR, payload: error });
-  }
-}
-
 export const incomeSaga = [
   takeEvery(ADD_ITEM, addIncome),
-  takeEvery(START_FETCHING, getIncomes),
 ];

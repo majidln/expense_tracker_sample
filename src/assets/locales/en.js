@@ -1,5 +1,4 @@
 export default {
-  greeting: 'Hi!',
   floatingMenu: {
     income: 'Income',
     outcome: 'Outcome'
@@ -20,6 +19,8 @@ export default {
     type: 'Type',
     typePlaceholder: 'Please select type',
     submit: 'Subimt',
+    empty: 'Your income is empty!',
+    addNew: 'Add new icome',
     errors: {
       amount: 'Amount is required',
       amountFormat: 'Amount is not valid',
@@ -38,6 +39,8 @@ export default {
     type: 'Type',
     typePlaceholder: 'Please select type',
     submit: 'Subimt',
+    empty: 'Your Outcome is empty!',
+    addNew: 'Add new outcome',
     errors: {
       amount: 'Amount is required',
       amountFormat: 'Amount is not valid',
@@ -63,5 +66,11 @@ export default {
       en: 'English',
       fa: 'فارسی (Farsi)'
     }
+  },
+  statistic: {
+    today: 'Today',
+    week: 'Week',
+    month: 'Month',
+    all: 'All'
   }
 };

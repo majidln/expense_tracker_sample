@@ -7,19 +7,14 @@ i18n
   .use(initReactI18next) // passes i18n down to react-i18next
   .init({
     resources: {
+      fa: {
+        translation: fa
+      },
       en: {
         translation: en
       },
-      fa: {
-        translation: fa
-      }
     },
     lng: 'en',
-    fallbackLng: 'en',
-
-    interpolation: {
-      escapeValue: false
-    }
   });
 
 export default i18n;
