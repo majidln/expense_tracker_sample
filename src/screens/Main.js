@@ -1,15 +1,12 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import ActionButton from 'react-native-action-button';
-import Icon from 'react-native-vector-icons/Ionicons';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { getStatistics } from '../state/statistics/actions';
 import { getIncomes } from '../state/income/actions';
 import { withTheme } from '../providers/ThemeProviders';
-import { StatisticBox, ExpenseList } from '../components';
-
-Icon.loadFont();
+import { StatisticBox, ExpenseList, IonicIcon } from '../components';
 
 function MainScreen({
   theme, navigation, statistics, getAllStatistics, fetchIncomeList, incomes, outcomes
@@ -49,10 +46,10 @@ function MainScreen({
       </ScrollView>
       <ActionButton buttonColor={theme.floatingMenu}>
         <ActionButton.Item buttonColor={theme.income} title={t('floatingMenu.income')} onPress={() => navigation.navigate('Income')}>
-          <Icon name="md-add" color="white" size={25} />
+          <IonicIcon name="md-add" color="white" size={25} />
         </ActionButton.Item>
         <ActionButton.Item buttonColor={theme.expense} title={t('floatingMenu.outcome')} onPress={() => navigation.navigate('Outcome')}>
-          <Icon name="md-remove" color="white" size={25} />
+          <IonicIcon name="md-remove" color="white" size={25} />
         </ActionButton.Item>
       </ActionButton>
     </View>
