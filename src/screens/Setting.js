@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, SafeAreaView } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Button, Label } from '../components';
 import { withTheme } from '../providers/ThemeProviders';
@@ -7,7 +7,7 @@ import { withTheme } from '../providers/ThemeProviders';
 function SettingScreen({ theme, themeID, switchTheme }) {
   const { t, i18n } = useTranslation();
   return (
-    <View style={[styles.wrapper, { backgroundColor: theme.backgroundColor }]}>
+    <SafeAreaView style={[styles.wrapper, { backgroundColor: theme.backgroundColor }]}>
       <View style={styles.languageWrapper}>
         <Label style={styles.switchLanguageText}>
           {t('setting.language.title')}
@@ -33,7 +33,7 @@ function SettingScreen({ theme, themeID, switchTheme }) {
           color={theme.switchThemeButton}
         />
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({

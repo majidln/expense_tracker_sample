@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View, Alert } from 'react-native';
+import { StyleSheet, View, Alert, SafeAreaView } from 'react-native';
 import { connect } from 'react-redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Formik } from 'formik';
@@ -23,7 +23,7 @@ function IncomeScreen({
   };
 
   return (
-    <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
+    <SafeAreaView style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
@@ -103,7 +103,7 @@ function IncomeScreen({
           </View>
         )}
       </Formik>
-    </View>
+    </SafeAreaView>
   );
 }
 const styles = StyleSheet.create({
