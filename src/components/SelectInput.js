@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import {
-  StyleSheet, View, Text, TouchableOpacity, FlatList
+  StyleSheet, View, TouchableOpacity, FlatList
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 import Modal from 'react-native-modal';
+import { withTheme } from '../providers/ThemeProviders';
+import IonicIcon from './Icon';
+import Label from './Label';
 import { isIphoneX } from '../utils/device';
-import i18n from '../services/i18n';
-
-Icon.loadFont();
 
 // data: get a list of item to show in select box as a modal
 // value: get selected itemText, itemValue
@@ -15,7 +14,7 @@ function SelectInput(props) {
   const [visible, setVisible] = useState(false);
 
   const {
-    onSelect, value, itemText, itemValue, data, label, error, placeholder
+    onSelect, value, itemValue, data, label, error, placeholder, theme
   } = props;
 
   const onSelectItem = (item) => {
@@ -25,7 +24,7 @@ function SelectInput(props) {
 
   const renderItem = ({ item }) => (
     <TouchableOpacity style={styles.itemWrapper} onPress={() => onSelectItem(item)}>
-      <Text style={styles.item}>{item.title}</Text>
+      <Label style={styles.item}>{item.title}</Label>
     </TouchableOpacity>
   );
 
@@ -35,13 +34,16 @@ function SelectInput(props) {
 
   return (
     <View style={styles.wrapper}>
-      {label && <Text style={styles.label}>{label}</Text>}
-      <TouchableOpacity onPress={() => setVisible(true)} style={styles.input}>
-        {value[itemValue] ? <Text style={styles.value}>{value[itemValue]}</Text>
-          : <Text style={styles.placeholder}>{placeholder}</Text>}
-        <Icon style={styles.optionIcon} name="chevron-down-outline" size={28} color="gray" />
+      {label && <Label style={styles.label}>{label}</Label>}
+      <TouchableOpacity
+        onPress={() => setVisible(true)}
+        style={[styles.input, { backgroundColor: theme.inputBg }]}
+      >
+        {value[itemValue] ? <Label style={styles.value}>{value[itemValue]}</Label>
+          : <Label style={styles.placeholder}>{placeholder}</Label>}
+        <IonicIcon style={styles.optionIcon} name="chevron-down-outline" size={28} color="gray" />
       </TouchableOpacity>
-      {error && <Text style={styles.error}>{error}</Text>}
+      {error && <Label style={styles.error}>{error}</Label>}
       <Modal
         animationType="slide"
         transparent
@@ -55,12 +57,12 @@ function SelectInput(props) {
         <View style={[styles.centeredView, { paddingBottom: isIphoneX() ? 45 : 10 }]}>
           <View>
             <View style={styles.modalTitleWrapper}>
-              <Text style={styles.modalTitle}>{label}</Text>
+              <Label style={styles.modalTitle}>{label}</Label>
               <TouchableOpacity
                 style={styles.closeBtn}
                 onPress={() => setVisible(false)}
               >
-                <Icon name="md-close" color="white" size={25} />
+                <IonicIcon name="md-close" color="white" size={25} />
               </TouchableOpacity>
             </View>
             <FlatList
@@ -93,12 +95,10 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 50,
-    backgroundColor: 'white',
     borderColor: 'lightgray',
     padding: 14,
     borderRadius: 8,
     borderWidth: 1,
-    fontSize: 18
   },
   error: {
     color: 'red',
@@ -177,8 +177,7 @@ SelectInput.defaultProps = {
   itemValue: 'title',
   itemId: 'id',
   label: '',
-  placeholder: i18n.t('components.selectInput.defaultValue'),
-  onSelect: () => {}
+  onSelect: () => {},
 };
 
-export default SelectInput;
+export default withTheme(SelectInput);

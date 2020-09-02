@@ -6,26 +6,26 @@ import {
 } from './type';
 import { apiPost, apiGet } from '../../services/api';
 
-function* addIncome(action) {
+function* addOutcome(action) {
   try {
-    const newIncomes = yield apiPost(action.payload.income);
-    yield put({ type: ADD_DONE, payload: newIncomes.data });
+    const newOutcomes = yield apiPost(action.payload.outcome);
+    yield put({ type: ADD_DONE, payload: newOutcomes.data });
     // yield call(action.goBack);
   } catch (error) {
     yield put({ type: FETCHING_ERROR, payload: error });
   }
 }
 
-function* getIncomes() {
+function* getOutcomes() {
   try {
-    const incomes = yield apiGet(require('../../assets/data/categories.json'));
-    yield put({ type: FETCHING_DONE, payload: incomes });
+    const outcomes = yield apiGet(require('../../assets/data/categories.json'));
+    yield put({ type: FETCHING_DONE, payload: outcomes });
   } catch (error) {
     yield put({ type: ADD_ERROR, payload: error });
   }
 }
 
-export const incomeSaga = [
-  takeEvery(ADD_ITEM, addIncome),
-  takeEvery(START_FETCHING, getIncomes),
+export const outcomeSaga = [
+  takeEvery(ADD_ITEM, addOutcome),
+  takeEvery(START_FETCHING, getOutcomes),
 ];

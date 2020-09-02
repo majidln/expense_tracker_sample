@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Formik } from 'formik';
 import { useTranslation } from 'react-i18next';
-import { addIncome } from '../state/income/actions';
 import { withTheme } from '../providers/ThemeProviders';
+import { addOutcome } from '../state/outcome/actions';
 import {
   TextInput, Button, CategorySelect, TypeSelect
 } from '../components';
 
-function IncomeScreen({ theme, createNewIncom, income }) {
+function OutcomeScreen({ theme, createNewIncom, outcome }) {
   const { t } = useTranslation();
 
   const initialValues = {
@@ -25,23 +25,23 @@ function IncomeScreen({ theme, createNewIncom, income }) {
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
-          createNewIncom({ income: values });
+          createNewIncom({ outcome: values });
         }}
         validate={(values) => {
           const errors = {};
           if (!values.amount) {
-            errors.amount = t('income.errors.amount');
+            errors.amount = t('outcome.errors.amount');
           } else if (isNaN(values.amount)) {
-            errors.amount = t('income.errors.amountFormat');
+            errors.amount = t('outcome.errors.amountFormat');
           }
           if (!(values.category && values.category.id)) {
-            errors.category = t('income.errors.category');
+            errors.category = t('outcome.errors.category');
           }
           if (!(values.type && values.type.id)) {
-            errors.type = t('income.errors.type');
+            errors.type = t('outcome.errors.type');
           }
           if (!values.description) {
-            errors.description = t('income.errors.description');
+            errors.description = t('outcome.errors.description');
           }
           return errors;
         }}
@@ -55,37 +55,37 @@ function IncomeScreen({ theme, createNewIncom, income }) {
           <View style={styles.formWrapper}>
             <KeyboardAwareScrollView style={styles.formScroll} keyboardShouldPersistTaps="handled">
               <TextInput
-                placeholder={t('income.amountPlaceholder')}
-                label={t('income.amount')}
+                placeholder={t('outcome.amountPlaceholder')}
+                label={t('outcome.amount')}
                 value={values.amount}
                 onChangeText={(text) => setFieldValue('amount', text)}
                 keyboardType="numeric"
                 error={errors.amount}
               />
               <CategorySelect
-                type="income"
-                label={t('income.category')}
-                placeholder={t('income.categoryPlaceholder')}
+                type="outcome"
+                label={t('outcome.category')}
+                placeholder={t('outcome.categoryPlaceholder')}
                 onSelect={(cat) => setFieldValue('category', cat)}
                 value={values.category}
                 error={errors.category}
               />
               <TypeSelect
-                label={t('income.type')}
-                placeholder={t('income.typePlaceholder')}
+                label={t('outcome.type')}
+                placeholder={t('outcome.typePlaceholder')}
                 onSelect={(type) => setFieldValue('type', type)}
                 value={values.type}
                 error={errors.type}
               />
               <TextInput
-                placeholder={t('income.descriptionPlaceholder')}
-                label={t('income.description')}
+                placeholder={t('outcome.descriptionPlaceholder')}
+                label={t('outcome.description')}
                 value={values.description}
                 onChangeText={(text) => setFieldValue('description', text)}
                 error={errors.description}
               />
             </KeyboardAwareScrollView>
-            <Button label={t('income.submit')} onPress={() => handleSubmit()} loading={income.adding} />
+            <Button label={t('outcome.submit')} onPress={() => handleSubmit()} loading={outcome.adding} />
           </View>
         )}
       </Formik>
@@ -107,14 +107,14 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   return {
-    income: state.income
+    outcome: state.outcome
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    createNewIncom: (income) => dispatch(addIncome(income))
+    createNewIncom: (outcome) => dispatch(addOutcome(outcome))
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withTheme(IncomeScreen));
+export default connect(mapStateToProps, mapDispatchToProps)(withTheme(OutcomeScreen));

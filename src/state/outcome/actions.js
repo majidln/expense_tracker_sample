@@ -1,15 +1,14 @@
 /* eslint-disable import/prefer-default-export */
 import { ADD_ITEM, START_FETCHING } from './type';
 
-export function addIncome(payload) {
-  console.log('addIncome', payload);
+export function addOutcome(payload) {
   return {
     type: ADD_ITEM,
     payload,
   };
 }
 
-export function getIncomes() {
+export function getOutcomes() {
   return {
     type: START_FETCHING,
   };

@@ -1,20 +1,28 @@
 {
     "light": {
+        "text": "black",
         "primaryText": "#0b132b",
         "backgroundColor": "#eff7f6",
         "headerColor": "#22a6b3",
         "floatingMenu": "#4834d4",
         "income": "#6ab04c",
         "expense": "#eb4d4b",
-        "mainButton": "#22a6b3"
+        "mainButton": "#22a6b3",
+        "switchThemeButton": "#c7ecee",
+        "switchThemeButtonBg": "#130f40",
+        "inputBg": "#ffffff"
     },
     "dark": {
+        "text": "#c7ecee",
         "primaryText": "#98c1d9",
         "backgroundColor": "#14213d",
         "headerColor": "#130f40",
         "floatingMenu": "#4834d4",
         "income": "#6ab04c",
         "expense": "#eb4d4b",
-        "mainButton": "#130f40"
+        "mainButton": "#130f40",
+        "switchThemeButton": "#130f40",
+        "switchThemeButtonBg": "#535c68",
+        "inputBg": "#30336b"
     }
 }
