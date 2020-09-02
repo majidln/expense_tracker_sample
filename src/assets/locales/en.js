@@ -21,6 +21,7 @@ export default {
     submit: 'Subimt',
     empty: 'Your income is empty!',
     addNew: 'Add new icome',
+    added: 'New income added',
     errors: {
       amount: 'Amount is required',
       amountFormat: 'Amount is not valid',
@@ -41,6 +42,7 @@ export default {
     submit: 'Subimt',
     empty: 'Your Outcome is empty!',
     addNew: 'Add new outcome',
+    added: 'New outcome added',
     errors: {
       amount: 'Amount is required',
       amountFormat: 'Amount is not valid',

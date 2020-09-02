@@ -11,6 +11,9 @@ function* addIncome(action) {
     const now = new Date();
     const created = `${now.getMonth()}/${now.getDay()}/${now.getFullYear()}-${now.getHours()}:${now.getMinutes()}`;
     const newIncomes = yield apiPost({ ...action.payload.income, created });
+    if (action.payload && action.payload.callback) {
+      action.payload.callback();
+    }
     yield put({ type: ADD_DONE, payload: newIncomes.data });
     // yield call(action.goBack);
   } catch (error) {

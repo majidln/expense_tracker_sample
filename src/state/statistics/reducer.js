@@ -4,7 +4,6 @@ import {
 } from './type';
 
 export default function reducer(state = initialState, action) {
-  console.log('reducer', action)
   switch (action && action.type) {
     case START_FETCHING: {
       return {

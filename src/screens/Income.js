@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Formik } from 'formik';
@@ -10,7 +10,9 @@ import {
   TextInput, Button, CategorySelect, TypeSelect
 } from '../components';
 
-function IncomeScreen({ theme, createNewIncom, income }) {
+function IncomeScreen({
+  theme, createNewIncom, income, navigation
+}) {
   const { t } = useTranslation();
 
   const initialValues = {
@@ -25,7 +27,13 @@ function IncomeScreen({ theme, createNewIncom, income }) {
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
-          createNewIncom({ income: values });
+          createNewIncom({
+            income: values,
+            callback: () => {
+              Alert.alert('', t('income.added'), '');
+              navigation.goBack();
+            }
+          });
         }}
         validate={(values) => {
           const errors = {};
