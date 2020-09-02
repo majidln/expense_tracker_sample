@@ -63,5 +63,11 @@ export default {
       en: 'English',
       fa: 'فارسی (Farsi)'
     }
+  },
+  statistic: {
+    today: 'Today',
+    week: 'Week',
+    month: 'Month',
+    all: 'All'
   }
 };

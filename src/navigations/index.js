@@ -4,7 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { TouchableOpacity } from 'react-native';
 import i18n from '../services/i18n';
 import { IonicIcon } from '../components';
-import MainScreen from '../screens/MainScreen';
+import MainScreen from '../screens/Main';
 import SettingScreen from '../screens/Setting';
 import IncomeScreen from '../screens/Income';
 import OutcomeScreen from '../screens/Outcome';

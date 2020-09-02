@@ -10,7 +10,9 @@
         "mainButton": "#22a6b3",
         "switchThemeButton": "#c7ecee",
         "switchThemeButtonBg": "#130f40",
-        "inputBg": "#ffffff"
+        "inputBg": "#ffffff",
+        "incomeBox": "#16a085",
+        "outcomeBox": "#ff4757"
     },
     "dark": {
         "text": "#c7ecee",
@@ -23,6 +25,8 @@
         "mainButton": "#130f40",
         "switchThemeButton": "#130f40",
         "switchThemeButtonBg": "#535c68",
-        "inputBg": "#30336b"
+        "inputBg": "#30336b",
+        "incomeBox": "#006266",
+        "outcomeBox": "#6F1E51"
     }
 }

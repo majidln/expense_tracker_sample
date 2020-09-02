@@ -1,0 +1,14 @@
+{
+    "income": {
+        "today": 110,
+        "week": 220,
+        "month": 445,
+        "all": 4250
+    },
+    "outcome": {
+        "today": 226,
+        "week": 550,
+        "month": 1320,
+        "all": 3750
+    }
+}
