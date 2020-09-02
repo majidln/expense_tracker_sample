@@ -8,7 +8,9 @@ import { apiPost, apiGet } from '../../services/api';
 
 function* addOutcome(action) {
   try {
-    const newOutcomes = yield apiPost(action.payload.outcome);
+    const now = new Date();
+    const created = `${now.getMonth()}/${now.getDay()}/${now.getFullYear()}-${now.getHours()}:${now.getMinutes()}`;
+    const newOutcomes = yield apiPost({...action.payload.outcome, created });
     yield put({ type: ADD_DONE, payload: newOutcomes.data });
     // yield call(action.goBack);
   } catch (error) {

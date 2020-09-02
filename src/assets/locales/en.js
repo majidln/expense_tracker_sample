@@ -20,6 +20,8 @@ export default {
     type: 'Type',
     typePlaceholder: 'Please select type',
     submit: 'Subimt',
+    empty: 'Your income is empty!',
+    addNew: 'Add new icome',
     errors: {
       amount: 'Amount is required',
       amountFormat: 'Amount is not valid',
@@ -38,6 +40,8 @@ export default {
     type: 'Type',
     typePlaceholder: 'Please select type',
     submit: 'Subimt',
+    empty: 'Your Outcome is empty!',
+    addNew: 'Add new outcome',
     errors: {
       amount: 'Amount is required',
       amountFormat: 'Amount is not valid',

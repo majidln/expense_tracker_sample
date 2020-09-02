@@ -15,7 +15,8 @@ module.exports = {
     'react/jsx-props-no-spreading': 'off',
     eqeqeq: 'off',
     'import/prefer-default-export': 'off',
-    'global-require': 'off'
+    'global-require': 'off',
+    'react/no-array-index-key': 'off'
   },
   globals: {
     fetch: false,

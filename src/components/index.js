@@ -7,6 +7,7 @@ import Loading from './Loading';
 import IonicIcon from './Icon';
 import Label from './Label';
 import StatisticBox from './StatisticBox';
+import ExpenseList from './ExpenseList';
 
 export {
   TextInput,
@@ -17,5 +18,6 @@ export {
   Loading,
   IonicIcon,
   Label,
-  StatisticBox
+  StatisticBox,
+  ExpenseList
 };

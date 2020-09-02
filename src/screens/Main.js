@@ -5,18 +5,22 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
 import { getStatistics } from '../state/statistics/actions';
+import { getIncomes } from '../state/income/actions';
 import { withTheme } from '../providers/ThemeProviders';
-import { StatisticBox } from '../components';
+import { StatisticBox, ExpenseList } from '../components';
 
 Icon.loadFont();
 
 function MainScreen({
-  theme, navigation, statistics, getAllStatistics
+  theme, navigation, statistics, getAllStatistics, fetchIncomeList, incomes, outcomes
 }) {
   const { t } = useTranslation();
 
   useEffect(() => {
+    // fetch stattiscs
     getAllStatistics();
+    // fetch incomes list
+    fetchIncomeList();
   }, []);
 
   return (
@@ -37,9 +41,12 @@ function MainScreen({
               icon="remove-circle-outline"
             />
           </View>
+          <View>
+            <ExpenseList type="income" list={incomes} addNewPress={() => navigation.navigate('Income')} color="#27ae60" />
+            <ExpenseList type="outcome" list={outcomes} addNewPress={() => navigation.navigate('Outcome')} color="#c0392b" />
+          </View>
         </View>
       </ScrollView>
-
       <ActionButton buttonColor={theme.floatingMenu}>
         <ActionButton.Item buttonColor={theme.income} title={t('floatingMenu.income')} onPress={() => navigation.navigate('Income')}>
           <Icon name="md-add" color="white" size={25} />
@@ -75,13 +82,18 @@ const styles = StyleSheet.create({
 
 function mapStateToProps(state) {
   return {
-    statistics: state.statistics
+    statistics: state.statistics,
+    incomes: state.income.list,
+    incomeFetching: state.income.fetching,
+    outcomes: state.outcome.list,
+    outcomeFetching: state.outcome.fetching
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    getAllStatistics: () => dispatch(getStatistics())
+    getAllStatistics: () => dispatch(getStatistics()),
+    fetchIncomeList: () => dispatch(getIncomes())
   };
 }
 
