@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { StyleSheet, View, ScrollView } from 'react-native';
+import { StyleSheet, View, ScrollView, SafeAreaView } from 'react-native';
 import ActionButton from 'react-native-action-button';
 import { useTranslation } from 'react-i18next';
 import { connect } from 'react-redux';
@@ -19,9 +19,9 @@ function MainScreen({
     // fetch incomes list
     fetchIncomeList();
   }, []);
-  
+
   return (
-    <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
+    <SafeAreaView style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
       <ScrollView style={styles.scrollWrapper}>
         <View style={styles.contentWrapper}>
           <View style={styles.statisticWrapper}>
@@ -52,7 +52,7 @@ function MainScreen({
           <IonicIcon name="md-remove" color="white" size={25} />
         </ActionButton.Item>
       </ActionButton>
-    </View>
+    </SafeAreaView>
   );
 }
 
