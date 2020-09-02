@@ -3,6 +3,7 @@ import { StyleSheet, View } from 'react-native';
 import { useTranslation } from 'react-i18next';
 import { Button, Label } from '../components';
 import { withTheme } from '../providers/ThemeProviders';
+import i18n from '../services/i18n';
 
 function SettingScreen({ theme, themeID, switchTheme }) {
   const { t } = useTranslation();
@@ -23,12 +24,12 @@ function SettingScreen({ theme, themeID, switchTheme }) {
         <View style={styles.switchLanugeWrapper}>
           <Button
             style={styles.enButton}
-            onPress={() => { locale = 'en'; }}
+            onPress={() => { i18n.changeLanguage('en'); }}
             label={t('setting.language.en')}
           />
           <Button
             style={styles.faButton}
-            onPress={() => { locale = 'fa'; }}
+            onPress={() => { i18n.changeLanguage('fa'); }}
             label={t('setting.language.fa')}
           />
         </View>
