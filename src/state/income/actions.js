@@ -2,7 +2,7 @@
 import { ADD_ITEM, START_FETCHING } from './type';
 
 export function addIncome(payload) {
-  console.log('addIncome', payload)
+  console.log('addIncome', payload);
   return {
     type: ADD_ITEM,
     payload,

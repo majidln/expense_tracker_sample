@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Formik } from 'formik';
 import { addIncome } from '../state/income/actions';
+import { withTheme } from '../providers/ThemeProviders';
 import {
   TextInput, Button, CategorySelect, TypeSelect
 } from '../components';
 import I18n from '../services/i18n';
 
-function IncomeScreen({ createNewIncom, income }) {
+function IncomeScreen({ theme, createNewIncom, income }) {
   const initialValues = {
     amount: '',
     category: {},
@@ -18,7 +19,7 @@ function IncomeScreen({ createNewIncom, income }) {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
@@ -114,4 +115,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(IncomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(withTheme(IncomeScreen));

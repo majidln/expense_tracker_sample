@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, TouchableOpacity } from 'react-native';
+import { StyleSheet, TouchableOpacity } from 'react-native';
 import { withTheme } from '../providers/ThemeProviders';
 import Loading from './Loading';
+import Label from './Label';
 
 function Button({
   label, onPress, style, bgColor, color, theme, loading
@@ -12,7 +13,7 @@ function Button({
       onPress={() => onPress && !loading && onPress()}
     >
       {!loading
-        ? <Text style={[styles.label, { color }]}>{label}</Text>
+        ? <Label style={{ ...styles.label, ...{ color } }}>{label}</Label>
         : <Loading />}
     </TouchableOpacity>
   );

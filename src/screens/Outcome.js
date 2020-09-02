@@ -3,13 +3,14 @@ import { StyleSheet, View } from 'react-native';
 import { connect } from 'react-redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Formik } from 'formik';
+import { withTheme } from '../providers/ThemeProviders';
 import { addOutcome } from '../state/outcome/actions';
 import {
   TextInput, Button, CategorySelect, TypeSelect
 } from '../components';
 import I18n from '../services/i18n';
 
-function OutcomeScreen({ createNewIncom, outcome }) {
+function OutcomeScreen({ theme, createNewIncom, outcome }) {
   const initialValues = {
     amount: '',
     category: {},
@@ -18,7 +19,7 @@ function OutcomeScreen({ createNewIncom, outcome }) {
   };
 
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
@@ -114,4 +115,4 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(OutcomeScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(withTheme(OutcomeScreen));

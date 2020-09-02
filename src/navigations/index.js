@@ -8,7 +8,6 @@ import MainScreen from '../screens/MainScreen';
 import SettingScreen from '../screens/Setting';
 import IncomeScreen from '../screens/Income';
 import OutcomeScreen from '../screens/Outcome';
-import ModalScreen from '../screens/ModalScreen';
 
 const Stack = createStackNavigator();
 function MainStackNavigator() {
@@ -41,7 +40,6 @@ function MainStackNavigator() {
         <Stack.Screen name="Setting" component={SettingScreen} options={{ title: i18n.t('navigation.setting') }} />
         <Stack.Screen name="Income" component={IncomeScreen} options={{ title: i18n.t('navigation.income') }} />
         <Stack.Screen name="Outcome" component={OutcomeScreen} options={{ title: i18n.t('navigation.outcome') }} />
-        <Stack.Screen name="Modal" component={ModalScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

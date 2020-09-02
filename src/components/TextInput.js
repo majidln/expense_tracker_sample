@@ -1,22 +1,24 @@
 import React from 'react';
 import {
-  TextInput as EditText, StyleSheet, View, Text
+  TextInput as EditText, StyleSheet, View
 } from 'react-native';
+import Label from './Label';
+import { withTheme } from '../providers/ThemeProviders';
 
 function TextInput(props) {
   const {
-    onChangeText, value, label, error, style, ...other
+    onChangeText, value, label, error, style, theme, ...other
   } = props;
   return (
     <View style={styles.wrapper}>
-      {label && <Text style={styles.label}>{label}</Text>}
+      {label && <Label style={styles.label}>{label}</Label>}
       <EditText
         {...other}
-        style={[styles.input, style]}
+        style={[styles.input, style, { backgroundColor: theme.inputBg }]}
         onChangeText={(text) => onChangeText && onChangeText(text)}
         value={value}
       />
-      {error && <Text style={styles.error}>{error}</Text>}
+      {error && <Label style={styles.error}>{error}</Label>}
     </View>
   );
 }
@@ -31,7 +33,6 @@ const styles = StyleSheet.create({
   },
   input: {
     height: 50,
-    backgroundColor: 'white',
     borderColor: 'lightgray',
     padding: 14,
     borderRadius: 8,
@@ -44,4 +45,4 @@ const styles = StyleSheet.create({
   }
 });
 
-export default TextInput;
+export default withTheme(TextInput);

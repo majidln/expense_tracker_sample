@@ -1,6 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Button } from '../components';
+import { StyleSheet, View } from 'react-native';
+import { Button, Label } from '../components';
 import { withTheme } from '../providers/ThemeProviders';
 import I18n from '../services/i18n';
 
@@ -16,9 +16,9 @@ function SettingScreen({ theme, themeID, switchTheme }) {
         />
       </View>
       <View style={styles.languageWrapper}>
-        <Text style={[styles.switchLanguageText, { color: theme.text }]}>
+        <Label style={styles.switchLanguageText}>
           {I18n.t('setting.language.title')}
-        </Text>
+        </Label>
         <View style={styles.switchLanugeWrapper}>
           <Button
             style={styles.enButton}

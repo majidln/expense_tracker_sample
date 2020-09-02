@@ -1,5 +1,5 @@
 import {
-  put, takeEvery, call
+  put, takeEvery
 } from 'redux-saga/effects';
 import {
   ADD_ITEM, ADD_DONE, START_FETCHING, ADD_ERROR, FETCHING_DONE, FETCHING_ERROR

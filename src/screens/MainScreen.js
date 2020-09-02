@@ -1,18 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import ActionButton from 'react-native-action-button';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { withTheme } from '../providers/ThemeProviders';
 import I18n from '../services/i18n';
+import { Label } from '../components';
 
 Icon.loadFont();
 
 function MainScreen({ theme, navigation }) {
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
-      <Text styles={{ color: theme.primaryText }}>
+      <Label styles={{ color: theme.primaryText }}>
         {I18n.t('greeting')}
-      </Text>
+      </Label>
       <ActionButton buttonColor={theme.floatingMenu}>
         <ActionButton.Item buttonColor={theme.income} title={I18n.t('floatingMenu.income')} onPress={() => navigation.navigate('Income')}>
           <Icon name="md-add" color="white" size={25} />

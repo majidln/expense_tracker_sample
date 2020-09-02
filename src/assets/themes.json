@@ -9,7 +9,8 @@
         "expense": "#eb4d4b",
         "mainButton": "#22a6b3",
         "switchThemeButton": "#c7ecee",
-        "switchThemeButtonBg": "#130f40"
+        "switchThemeButtonBg": "#130f40",
+        "inputBg": "#ffffff"
     },
     "dark": {
         "text": "#c7ecee",
@@ -21,6 +22,7 @@
         "expense": "#eb4d4b",
         "mainButton": "#130f40",
         "switchThemeButton": "#130f40",
-        "switchThemeButtonBg": "#c7ecee"
+        "switchThemeButtonBg": "#535c68",
+        "inputBg": "#30336b"
     }
 }
