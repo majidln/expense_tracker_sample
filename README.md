@@ -35,4 +35,5 @@ Connect your device or run an Android emulator so:
 $ npm run android
 ```
 
-### Preview
+### Screen Shot
+[Screen Shot](screenshot)
