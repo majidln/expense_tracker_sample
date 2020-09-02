@@ -7,15 +7,7 @@ import { withTheme } from '../providers/ThemeProviders';
 function SettingScreen({ theme, themeID, switchTheme }) {
   const { t, i18n } = useTranslation();
   return (
-    <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
-      <View>
-        <Button
-          onPress={() => switchTheme()}
-          label={t(`setting.theme.to.${themeID === 'light' ? 'dark' : 'light'}`)}
-          bgColor={theme.switchThemeButtonBg}
-          color={theme.switchThemeButton}
-        />
-      </View>
+    <View style={[styles.wrapper, { backgroundColor: theme.backgroundColor }]}>
       <View style={styles.languageWrapper}>
         <Label style={styles.switchLanguageText}>
           {t('setting.language.title')}
@@ -33,16 +25,24 @@ function SettingScreen({ theme, themeID, switchTheme }) {
           />
         </View>
       </View>
+      <View>
+        <Button
+          onPress={() => switchTheme()}
+          label={t(`setting.theme.to.${themeID === 'light' ? 'dark' : 'light'}`)}
+          bgColor={theme.switchThemeButtonBg}
+          color={theme.switchThemeButton}
+        />
+      </View>
     </View>
   );
 }
 const styles = StyleSheet.create({
-  container: {
+  wrapper: {
     flex: 1,
-    padding: 8
+    padding: 8,
+    justifyContent: 'space-between'
   },
   languageWrapper: {
-    marginTop: 20
   },
   switchLanugeWrapper: {
     flexDirection: 'row'
