@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Formik } from 'formik';
@@ -10,7 +10,9 @@ import {
   TextInput, Button, CategorySelect, TypeSelect
 } from '../components';
 
-function IncomeScreen({ theme, createNewIncom, income }) {
+function IncomeScreen({
+  theme, createNewIncom, income, navigation
+}) {
   const { t } = useTranslation();
 
   const initialValues = {
@@ -25,7 +27,13 @@ function IncomeScreen({ theme, createNewIncom, income }) {
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
-          createNewIncom({ income: values });
+          createNewIncom({
+            income: values,
+            callback: () => {
+              Alert.alert('', t('income.added'), '');
+              navigation.goBack();
+            }
+          });
         }}
         validate={(values) => {
           const errors = {};
@@ -49,7 +57,9 @@ function IncomeScreen({ theme, createNewIncom, income }) {
         {({
           values,
           errors,
+          touched,
           setFieldValue,
+          setFieldTouched,
           handleSubmit,
         }) => (
           <View style={styles.formWrapper}>
@@ -60,7 +70,8 @@ function IncomeScreen({ theme, createNewIncom, income }) {
                 value={values.amount}
                 onChangeText={(text) => setFieldValue('amount', text)}
                 keyboardType="numeric"
-                error={errors.amount}
+                error={touched.amount && errors.amount}
+                onBlur={() => setFieldTouched('amount')}
               />
               <CategorySelect
                 type="income"
@@ -68,21 +79,24 @@ function IncomeScreen({ theme, createNewIncom, income }) {
                 placeholder={t('income.categoryPlaceholder')}
                 onSelect={(cat) => setFieldValue('category', cat)}
                 value={values.category}
-                error={errors.category}
+                error={touched.category && errors.category}
+                onBlur={() => setFieldTouched('category')}
               />
               <TypeSelect
                 label={t('income.type')}
                 placeholder={t('income.typePlaceholder')}
                 onSelect={(type) => setFieldValue('type', type)}
                 value={values.type}
-                error={errors.type}
+                error={touched.type && errors.type}
+                onBlur={() => setFieldTouched('type')}
               />
               <TextInput
                 placeholder={t('income.descriptionPlaceholder')}
                 label={t('income.description')}
                 value={values.description}
                 onChangeText={(text) => setFieldValue('description', text)}
-                error={errors.description}
+                error={touched.description && errors.description}
+                onBlur={() => setFieldTouched('description')}
               />
             </KeyboardAwareScrollView>
             <Button label={t('income.submit')} onPress={() => handleSubmit()} loading={income.adding} />

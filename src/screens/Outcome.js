@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, Alert } from 'react-native';
 import { connect } from 'react-redux';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import { Formik } from 'formik';
@@ -10,7 +10,9 @@ import {
   TextInput, Button, CategorySelect, TypeSelect
 } from '../components';
 
-function OutcomeScreen({ theme, createNewIncom, outcome }) {
+function OutcomeScreen({
+  theme, createNewIncom, outcome, navigation
+}) {
   const { t } = useTranslation();
 
   const initialValues = {
@@ -25,7 +27,13 @@ function OutcomeScreen({ theme, createNewIncom, outcome }) {
       <Formik
         initialValues={initialValues}
         onSubmit={(values) => {
-          createNewIncom({ outcome: values });
+          createNewIncom({
+            outcome: values,
+            callback: () => {
+              Alert.alert('', t('outcome.added'), '');
+              navigation.goBack();
+            }
+          });
         }}
         validate={(values) => {
           const errors = {};
@@ -49,7 +57,9 @@ function OutcomeScreen({ theme, createNewIncom, outcome }) {
         {({
           values,
           errors,
+          touched,
           setFieldValue,
+          setFieldTouched,
           handleSubmit,
         }) => (
           <View style={styles.formWrapper}>
@@ -60,7 +70,8 @@ function OutcomeScreen({ theme, createNewIncom, outcome }) {
                 value={values.amount}
                 onChangeText={(text) => setFieldValue('amount', text)}
                 keyboardType="numeric"
-                error={errors.amount}
+                error={touched.amount && errors.amount}
+                onBlur={() => setFieldTouched('amount')}
               />
               <CategorySelect
                 type="outcome"
@@ -68,21 +79,23 @@ function OutcomeScreen({ theme, createNewIncom, outcome }) {
                 placeholder={t('outcome.categoryPlaceholder')}
                 onSelect={(cat) => setFieldValue('category', cat)}
                 value={values.category}
-                error={errors.category}
+                error={touched.category && errors.category}
+                onBlur={() => setFieldTouched('category')}
               />
               <TypeSelect
                 label={t('outcome.type')}
                 placeholder={t('outcome.typePlaceholder')}
                 onSelect={(type) => setFieldValue('type', type)}
-                value={values.type}
-                error={errors.type}
+                error={touched.type && errors.type}
+                onBlur={() => setFieldTouched('type')}
               />
               <TextInput
                 placeholder={t('outcome.descriptionPlaceholder')}
                 label={t('outcome.description')}
                 value={values.description}
                 onChangeText={(text) => setFieldValue('description', text)}
-                error={errors.description}
+                error={touched.description && errors.description}
+                onBlur={() => setFieldTouched('description')}
               />
             </KeyboardAwareScrollView>
             <Button label={t('outcome.submit')} onPress={() => handleSubmit()} loading={outcome.adding} />

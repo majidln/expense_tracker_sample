@@ -19,7 +19,7 @@ function MainScreen({
     // fetch incomes list
     fetchIncomeList();
   }, []);
-
+  
   return (
     <View style={[styles.container, { backgroundColor: theme.backgroundColor }]}>
       <ScrollView style={styles.scrollWrapper}>
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
   },
   scrollWrapper: {
     flex: 1,
-    padding: 8
+    padding: 8,
   },
   contentWrapper: {
     flex: 1
